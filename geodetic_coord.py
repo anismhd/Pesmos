@@ -25,3 +25,18 @@ class geodetic_coord():
 		else:
 			longitude = float(str_longitude)
 		self.location = [latitude, longitude]
+	def __repr__(self):
+		if latitude < 0:
+			str_latitude = "{0:9.4f} S".format(abs(self.latitude))
+		else:
+			str_latitude = "{0:9.4f} N".format(abs(self.latitude))
+		if longitude < 0:
+			str_longitude = "{0:9.4f} W".format(abs(self.longitude))
+		else:
+			str_longitude = "{0:9.4f} E".format(abs(self.longitude))
+		return "({0:s},{1:s})".format(str_latitude,str_longitude)
+'''
+Self test mechanism
+'''
+if __name__ == '__main__':
+	main()
