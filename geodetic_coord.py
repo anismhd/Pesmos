@@ -9,22 +9,22 @@ Program by
 from numpy import sqrt
 class geodetic_coord():
 	def __init__(self,latitude, longitude):
-		self.location = [latitude, longitude]
-	def stringinit(self, str_latitude, str_longitude):
-		if len(str_latitude.split()) > 1:
-			if ('S' in str_latitude.split()[1]) or ('s' in str_latitude.split()[1]):
-				latitude = -1.0 * float(str_latitude.split()[0])
+		if isinstance(latitude, str):
+			if len(latitude.split()) > 1:
+				if ('S' in latitude.split()[1]) or ('s' in latitude.split()[1]):
+					latitude = -1.0 * float(latitude.split()[0])
+				else:
+					latitude = float(latitude.split()[0])
 			else:
-				latitude = float(str_latitude.split()[0])
-		else:
-			latitude = float(str_latitude)
-		if len(str_longitude.split()) > 1:
-			if ('W' in str_longitude.split()[1]) or ('w' in str_longitude.split()[1]):
-				longitude = -1.0 * float(str_longitude.split()[0])
+				latitude = float(latitude)
+		if isinstance(longitude, str):
+			if len(longitude.split()) > 1:
+				if ('W' in longitude.split()[1]) or ('w' in longitude.split()[1]):
+					longitude = -1.0 * float(longitude.split()[0])
+				else:
+					longitude = float(longitude.split()[0])
 			else:
-				longitude = float(str_longitude.split()[0])
-		else:
-			longitude = float(str_longitude)
+				longitude = float(longitude)
 		self.location = [latitude, longitude]
 	def distance_from_point(self, point):
 		R = 6371.0*(22.0/7.0)/180.0
@@ -49,7 +49,10 @@ if __name__ == '__main__':
 	print "\t\t anis.mhd@gmail.com"
 	print "\t\t https://github.com/anismhd\n\n"
 	print "\tTesing begin.."
-	print "Initialising one point in geodetic co-ordinate system (21.0,63.1)"
+	print "Demo 1 : Initialising one point in geodetic co-ordinate system (21.0,63.1)"
 	point1 = geodetic_coord(21.0,63.1)
 	print point1
+	print "Initialising same point using string input 21.0 N, 63.1 E"
+	point2 = geodetic_coord('21.0 N', '63.1 E')
+	print point2
 
