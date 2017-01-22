@@ -25,25 +25,57 @@ def degree_minute_second_to_value(degree,minute,second, direct):
         return degree + (minute+(second/60.0))/60.0
     else:
         return -1.0*(degree + (minute+(second/60.0))/60.0)
+# The following function are designed to parse string of geodetic co-ordinates
+def parsing_geodetic_half(string):
+    ascii = [45,46,48,49,50,51,52,53,54,54,55,56,57,78,83,87,69,110,115,119,101]
+    prv_flag = False
+    start = 0
+    data = {}
+    data_index = 0
+    for i in range(len(string.strip())):
+        if (not prv_flag) and (ord(string.strip()[i]) in ascii):
+            start = i
+            prv_flag = True
+            continue
+        if prv_flag and (not(ord(string.strip()[i]) in ascii)):
+            prv_flag = False
+            data[data_index] = string.strip()[start:i]
+            data_index = data_index + 1
+            continue
+    if prv_flag:
+        data[data_index] = string.strip()[start:]
+    if len(data) == 1:
+        value = float(data[0])
+        degree, minute, second, direct = value_to_degree_minute_second(value)
+    if len(data) == 2:
+        if data[1] in ['N','n','E','e']:
+            value = float(data[0])
+        else:
+            value = -1.0*float(data[0])
+        degree, minute, second, direct = value_to_degree_minute_second(value)
+    if len(data) == 4:
+        degree = int(data[0])
+        minute = int(data[1])
+        second = float(data[2])
+        if data[3] in ['N','n','E','e']:
+            direct = True
+        else:
+            direct = False
+    return {'value':value,'degree':degree,'minute':minute,'second':second,'direct':direct}
 class geodetic_coord():
 	def __init__(self,latitude, longitude):
 		if isinstance(latitude, str):
-			if len(latitude.split()) > 1:
-				if ('S' in latitude.split()[1]) or ('s' in latitude.split()[1]):
-					latitude = -1.0 * float(latitude.split()[0])
-				else:
-					latitude = float(latitude.split()[0])
-			else:
-				latitude = float(latitude)
+			lat = parsing_geodetic_half(latitude)
+		else:
+			degree, minute, second, direct = value_to_degree_minute_second(latitude)
+			lat = {'value':latitude,'degree':degree,'minute':minute,'second':second,'direct':direct}
 		if isinstance(longitude, str):
-			if len(longitude.split()) > 1:
-				if ('W' in longitude.split()[1]) or ('w' in longitude.split()[1]):
-					longitude = -1.0 * float(longitude.split()[0])
-				else:
-					longitude = float(longitude.split()[0])
-			else:
-				longitude = float(longitude)
+			lon = parsing_geodetic_half(longitude)
+		else:
+			degree, minute, second, direct = value_to_degree_minute_second(longitude)
+			lon = {'value':longitude,'degree':degree,'minute':minute,'second':second,'direct':direct}
 		self.location = array([latitude, longitude])
+		self.geodetic = [lat,lon]
 	def distance_from_point(self, point):
 		R = 6371.0*(22.0/7.0)/180.0
 		return sqrt(sum((self.location - point.location)*R)**2)
