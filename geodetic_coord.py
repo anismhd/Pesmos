@@ -9,6 +9,19 @@ Program by
 	This module requires more detailed section ... may be a new repository exclusively
 '''
 from numpy import sqrt, array, floor
+# Following functions will convert geodetic co-ordinate value to degree, minute, second
+def value_to_degree_minute_second(value):
+    if value < 0.0:
+        direct = False
+    else:
+        direct = True
+    degree = int(value)
+    minute = int((value-degree)*60.0)
+    second = ((value-degree)*60.0 - minute)*60.0
+    return degree, minute, second
+# Following function function will convert degree, minute and second to value
+def degree_minute_second_to_value(degree,minute,second):
+    return degree + (minute+(second/60.0))/60.0
 class geodetic_coord():
 	def __init__(self,latitude, longitude):
 		if isinstance(latitude, str):
