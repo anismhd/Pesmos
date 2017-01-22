@@ -18,7 +18,7 @@ def value_to_degree_minute_second(value):
     degree = int(value)
     minute = int((value-degree)*60.0)
     second = ((value-degree)*60.0 - minute)*60.0
-    return degree, minute, second, direct
+    return abs(degree), abs(minute), abs(second), direct
 # Following function function will convert degree, minute and second to value
 def degree_minute_second_to_value(degree,minute,second, direct):
     if direct:
@@ -74,21 +74,34 @@ class geodetic_coord():
 		else:
 			degree, minute, second, direct = value_to_degree_minute_second(longitude)
 			lon = {'value':longitude,'degree':degree,'minute':minute,'second':second,'direct':direct}
-		self.location = array([latitude, longitude])
+		self.location = array([lat['value'], lon['value']])
 		self.geodetic = [lat,lon]
 	def distance_from_point(self, point):
 		R = 6371.0*(22.0/7.0)/180.0
 		return sqrt(sum((self.location - point.location)*R)**2)
 	def __repr__(self):
-		if self.location[0] < 0.0:
-			str_latitude = "{0:9.4f} S".format(abs(self.location[0]))
+		deg_sgn= u'\N{DEGREE SIGN}'
+		if self.geodetic[0]['direct']:
+			lat_dir = 'N'
 		else:
-			str_latitude = "{0:9.4f} N".format(abs(self.location[0]))
-		if self.location[1] < 0.0:
-			str_longitude = "{0:9.4f} W".format(abs(self.location[1]))
+			lat_dir = 'S'
+		if self.geodetic[1]['direct']:
+			lon_dir = 'E'
 		else:
-			str_longitude = "{0:9.4f} E".format(abs(self.location[1]))
-		return "({0:s},{1:s})".format(str_latitude,str_longitude)
+			lon_dir = 'W'
+		return "{0:10.6f} {1:s},{2:10.6f} {3:s}".format(abs(self.location[0]),lat_dir,abs(self.location[1]),lon_dir)
+#		return ("{0:2i}"+deg_sgn+" {1:2i}\' {2:8.5f}\" {3:s},"+"{4:2i}"+deg_sgn+" {5:2i}\' {6:8.5f}\" {7:s}").format\
+#				(self.geodetic[0]['degree'],self.geodetic[0]['minute'],self.geodetic[0]['second'],lat_dir,\
+#					self.geodetic[1]['degree'],self.geodetic[1]['minute'],self.geodetic[1]['second'],lat_dir)
+#		if self.location[0] < 0.0:
+#			str_latitude = "{0:9.4f} S".format(abs(self.location[0]))
+#		else:
+#			str_latitude = "{0:9.4f} N".format(abs(self.location[0]))
+#		if self.location[1] < 0.0:
+#			str_longitude = "{0:9.4f} W".format(abs(self.location[1]))
+#		else:
+#			str_longitude = "{0:9.4f} E".format(abs(self.location[1]))
+#		return "({0:s},{1:s})".format(str_latitude,str_longitude)
 #	def str_in_degree_minute_seconds(self):
 #		deg_sign= u'\N{DEGREE SIGN}'
 #		latitude_degree = int(self.location[0])
@@ -122,7 +135,7 @@ if __name__ == '__main__':
 	print point2
 	print "Distance between point1 and point2 using distance_from_point = {0:10.4f}\n".format(point1.distance_from_point(point2))
 	print "Defining location of various airport cities in India ...."
-	Delhi_airport = geodetic_coord
-	Mumbai
-	Chennai
-	Kolkata
+#	Delhi_airport = geodetic_coord
+#	Mumbai_airport
+#	Chennai_airport
+#	Kolkata_airport
