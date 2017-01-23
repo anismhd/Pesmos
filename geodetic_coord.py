@@ -130,12 +130,15 @@ if __name__ == '__main__':
 	print "Demo 1 : Initializing point1 in geodetic co-ordinate system (21.0,63.1)"
 	point1 = geodetic_coord(21.0,63.1)
 	print point1
-	print "Initializing same point2 using string input 21.0 N, 63.1 E"
+	print "{0:2d} degree {1:2d} minute {2:8.5f} second {3}".format(point1.geodetic[0]['degree'],\
+		point1.geodetic[0]['minute'], point1.geodetic[0]['second'], point1.geodetic[0]['direct']),\
+	"{0:2d} degree {1:2d} minute {2:8.5f} second {3}".format(point1.geodetic[1]['degree'],\
+		point1.geodetic[1]['minute'], point1.geodetic[1]['second'], point1.geodetic[1]['direct'])
+	print "\nInitializing same point2 using string input 21.0 N, 63.1 E"
 	point2 = geodetic_coord('21.0 N', '63.1 E')
 	print point2
+	print "{0:2d} degree {1:2d} minute {2:8.5f} second {3}".format(point2.geodetic[0]['degree'],\
+		point2.geodetic[0]['minute'], point2.geodetic[0]['second'], point2.geodetic[0]['direct']),\
+	"{0:2d} degree {1:2d} minute {2:8.5f} second {3}".format(point2.geodetic[1]['degree'],\
+		point2.geodetic[1]['minute'], point2.geodetic[1]['second'], point2.geodetic[1]['direct'])
 	print "Distance between point1 and point2 using distance_from_point = {0:10.4f}\n".format(point1.distance_from_point(point2))
-	print "Defining location of various airport cities in India ...."
-#	Delhi_airport = geodetic_coord
-#	Mumbai_airport
-#	Chennai_airport
-#	Kolkata_airport
