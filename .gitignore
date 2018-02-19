@@ -9,6 +9,9 @@ __pycache__/
 # Folders
 IndiaMapShapefile/
 
+# Files
+*.pickle
+
 # Distribution / packaging
 .Python
 env/
