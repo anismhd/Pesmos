@@ -7,9 +7,13 @@
     pd.set_option('display.max_rows', None)
 
 
-    station_data_from_file = pickle.load( open( "station_data_from_file.pickle", "rb" ) )
-    pesmos_stations_final_pd = pickle.load( open( "pesmos_stations_final_pd.pickle", "rb" ) )
-    pesmos_stations = pickle.load( open( "pesmos_stations.pickle", "rb" ) )
+    pickle_files_loc = '/home/anis/Desktop/GitHub/Pesmos_Original/DataProcessing/'
+    station_data_from_file = pickle.load( open( pickle_files_loc+"station_data_from_file.pickle", "rb" ) )
+    pesmos_stations_final_pd = pickle.load( open( pickle_files_loc+"pesmos_stations_final_pd.pickle", "rb" ) )
+    pesmos_stations = pickle.load( open( pickle_files_loc+"pesmos_stations.pickle", "rb" ) )
+    pesmos_event_pd = pickle.load( open( pickle_files_loc+"pesmos_event_pd.pickle", "rb" ) )
+    EventsWithMagnitude = pickle.load( open( pickle_files_loc+"EventsWithMagnitude.pickle", "rb" ) )
+    EventsWithMoreThanThreeRecords = pickle.load( open( pickle_files_loc+"EventsWithMoreThanThreeRecords.pickle", "rb" ) )
 
 # Introduction
 
@@ -18,7 +22,7 @@ Institute of Technology Roorkee to study the ground motion characteristics of
 Himalayan earthquakes using strong motion accelerographs. The project was funded
 by Department of Science and Technology (DST), Government of India. The strong
 motion accelarograph network covers various region of Indian seismic zones V, IV
-and some thickly populated cities of seismic zone III. Out of 245 installed
+and some thickly populated cities of seismic zone III. Out of 298 installed
 accelarograms 193 station have recorded various earthquake events as shown in
 Figure 1.
 
@@ -37,7 +41,7 @@ Figure 1.
 
 
 
-    <matplotlib.legend.Legend at 0x7f6c9ab519d0>
+    <matplotlib.legend.Legend at 0x7f6c9b71e790>
 
 
 
@@ -2776,8 +2780,2738 @@ functioned or recorded events out of 293 recording stations.
 </div>
 
 
+# Seimsic Events Recorded
 
-    
+The PESMOS stations located as shown in Figure 1 recorded 253 events. List of
+events recorded by PESMOS stations and theis details are given in Table 2. Out
+of 253 events only 170 records have magnitudes assigned to it. The 73 events
+have more than three records.
+
+
+    print "Table 2 : Events Recorded by Pesmos Stations"
+    pesmos_event_pd
+
+    Table 2 : Events Recorded by Pesmos Stations
+
+
+
+
+
+<div style="max-width:1500px;overflow:auto;">
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Event ID</th>
+      <th>Event Name</th>
+      <th>Location</th>
+      <th>Magnitude in Accl. File</th>
+      <th>Recorded Stations</th>
+      <th>Time Provided in Accl. File</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>231</th>
+      <td>2005-12-14</td>
+      <td>PESMOS0232</td>
+      <td>20051214-Chamoli</td>
+      <td>Lat: 30.90,Lon: 79.30</td>
+      <td>5.2</td>
+      <td>PIITR0027,PIITR0008,PIITR0004,PIITR0013,PIITR0...</td>
+      <td>2005-12-14 07:09:48</td>
+    </tr>
+    <tr>
+      <th>219</th>
+      <td>2006-03-31</td>
+      <td>PESMOS0220</td>
+      <td>20060331-Jhajjar</td>
+      <td>Lat: 28.70,Lon: 76.80</td>
+      <td>3.4</td>
+      <td>PIITR0115</td>
+      <td>2006-03-31 11:25:39</td>
+    </tr>
+    <tr>
+      <th>187</th>
+      <td>2006-05-07</td>
+      <td>PESMOS0188</td>
+      <td>20060507-Jhajjar</td>
+      <td>Lat: 28.70,Lon: 76.60</td>
+      <td>4.1</td>
+      <td>PIITR0115</td>
+      <td>2006-05-07 16:01:00</td>
+    </tr>
+    <tr>
+      <th>133</th>
+      <td>2006-11-29</td>
+      <td>PESMOS0134</td>
+      <td>20061129-Alwar Earthquake</td>
+      <td>Lat: 27.60,Lon: 76.70</td>
+      <td>3.9</td>
+      <td>PIITR0124</td>
+      <td>2006-11-29 05:41:14</td>
+    </tr>
+    <tr>
+      <th>105</th>
+      <td>2006-12-10</td>
+      <td>PESMOS0106</td>
+      <td>20061210-Mandi Earthqake</td>
+      <td>Lat: 31.50,Lon: 76.70</td>
+      <td>3.5</td>
+      <td>PIITR0042</td>
+      <td>2006-12-10 08:19:29</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>2007-06-09</td>
+      <td>PESMOS0086</td>
+      <td>20070609-Bhagwanpur Earthquake</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0027</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>2007-06-22</td>
+      <td>PESMOS0034</td>
+      <td>20070622-Andaman</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0129</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>162</th>
+      <td>2007-07-22</td>
+      <td>PESMOS0163</td>
+      <td>20070722-Uttarkashi</td>
+      <td>Lat: 31.20,Lon: 78.20</td>
+      <td>5.0</td>
+      <td>PIITR0027,PIITR0056</td>
+      <td>2007-07-22 23:02:12</td>
+    </tr>
+    <tr>
+      <th>244</th>
+      <td>2007-09-14</td>
+      <td>PESMOS0245</td>
+      <td>20070914-Chamba</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0002</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>207</th>
+      <td>2007-10-04</td>
+      <td>PESMOS0208</td>
+      <td>20071004-Chamba</td>
+      <td>Lat: 32.50,Lon: 76.00</td>
+      <td>3.8</td>
+      <td>PIITR0037</td>
+      <td>2007-10-04 05:14:15</td>
+    </tr>
+    <tr>
+      <th>241</th>
+      <td>2007-10-18</td>
+      <td>PESMOS0242</td>
+      <td>20071018-Noida</td>
+      <td>Lat: 28.30,Lon: 77.60</td>
+      <td>3.6</td>
+      <td>PIITR0163</td>
+      <td>2007-10-18 05:54:41</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>2007-10-28</td>
+      <td>PESMOS0083</td>
+      <td>20071028-Bilaspur</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0036</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>151</th>
+      <td>2007-11-21</td>
+      <td>PESMOS0152</td>
+      <td>20071121-Morigaon</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0253</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>224</th>
+      <td>2007-11-25</td>
+      <td>PESMOS0225</td>
+      <td>20071125-DELHI, Haryana Border Region</td>
+      <td>Lat: 28.60,Lon: 77.00</td>
+      <td>4.3</td>
+      <td>PDELH0011,PIITR0117,PDELH0016,PDELH0014,PIITR0...</td>
+      <td>2007-11-25 23:12:20</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>2007-12-14</td>
+      <td>PESMOS0099</td>
+      <td>20071214-Nathpa</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0056</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>2007-12-15</td>
+      <td>PESMOS0078</td>
+      <td>20071215-Nathpa</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0056</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>111</th>
+      <td>2007-12-16</td>
+      <td>PESMOS0112</td>
+      <td>20071216-Nathpa</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0056</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2008-03-02</td>
+      <td>PESMOS0004</td>
+      <td>20080302-Pithoragarh</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0009</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>238</th>
+      <td>2008-03-13</td>
+      <td>PESMOS0239</td>
+      <td>20080313-DARRANG, ASSAM</td>
+      <td>Lat: 26.60,Lon: 91.80</td>
+      <td>4.0</td>
+      <td>PIITR0265,PIITR0253</td>
+      <td>2008-03-13 15:42:38</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>2008-03-18</td>
+      <td>PESMOS0049</td>
+      <td>20080318-Morigaon</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0253</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>243</th>
+      <td>2008-03-19</td>
+      <td>PESMOS0244</td>
+      <td>20080319-Cooch Vihar</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0235</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>101</th>
+      <td>2008-03-21</td>
+      <td>PESMOS0102</td>
+      <td>20080321-Rampur</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0063</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>2008-03-22</td>
+      <td>PESMOS0064</td>
+      <td>20080322-Pithoragarh</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0009</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>227</th>
+      <td>2008-04-28</td>
+      <td>PESMOS0228</td>
+      <td>20080428-Gangtok</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0238</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>2008-05-24</td>
+      <td>PESMOS0101</td>
+      <td>20080524-Cooch Vihar</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0235</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>124</th>
+      <td>2008-05-29</td>
+      <td>PESMOS0125</td>
+      <td>20080529-DARRANG, ASSAM</td>
+      <td>Lat: 26.60,Lon: 91.80</td>
+      <td>4.2</td>
+      <td>PIITR0265,PIITR0253</td>
+      <td>2008-05-29 10:34:46</td>
+    </tr>
+    <tr>
+      <th>239</th>
+      <td>2008-05-29</td>
+      <td>PESMOS0240</td>
+      <td>20080529-Chamba(N.L.)</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0002</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>2008-06-07</td>
+      <td>PESMOS0146</td>
+      <td>20080607-Gangtok</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0238</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2008-06-27</td>
+      <td>PESMOS0011</td>
+      <td>20080627-Andaman Island</td>
+      <td>Lat: 11.00,Lon: 91.60</td>
+      <td>6.7</td>
+      <td>PIITR0129</td>
+      <td>2008-06-27 11:40:16</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>2008-07-07</td>
+      <td>PESMOS0085</td>
+      <td>20080707-NAGALAND ( INDIA) -- MYANMAR BORDER R...</td>
+      <td>Lat: 26.10,Lon: 95.10</td>
+      <td>5.1</td>
+      <td>PIITR0260</td>
+      <td>2008-07-07 02:50:36</td>
+    </tr>
+    <tr>
+      <th>208</th>
+      <td>2008-07-17</td>
+      <td>PESMOS0209</td>
+      <td>20080717-Cooch Vihar</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0235</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>2008-07-26</td>
+      <td>PESMOS0073</td>
+      <td>20080726-Bangladesh India border</td>
+      <td>Lat: 24.80,Lon: 90.60</td>
+      <td>4.8</td>
+      <td>PIITR0240</td>
+      <td>2008-07-26 18:51:53</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>2008-08-10</td>
+      <td>PESMOS0065</td>
+      <td>20080810-Andaman Island</td>
+      <td>Lat: 11.10,Lon: 91.60</td>
+      <td>6.0</td>
+      <td>PIITR0129</td>
+      <td>2008-08-10 08:20:34</td>
+    </tr>
+    <tr>
+      <th>250</th>
+      <td>2008-08-19</td>
+      <td>PESMOS0251</td>
+      <td>20080819-PITHORAGARH, Uttarakhand</td>
+      <td>Lat: 30.10,Lon: 80.10</td>
+      <td>4.3</td>
+      <td>PIITR0023,PIITR0004,PIITR0029,PIITR0009</td>
+      <td>2008-08-19 10:54:26</td>
+    </tr>
+    <tr>
+      <th>172</th>
+      <td>2008-09-04</td>
+      <td>PESMOS0173</td>
+      <td>20080904-(UTTARAKHAND)-TIBET Border</td>
+      <td>Lat: 30.10,Lon: 80.40</td>
+      <td>5.1</td>
+      <td>PIITR0023,PIITR0022,PIITR0020,PIITR0009,PIITR0...</td>
+      <td>2008-09-04 12:53:21</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>2008-09-06</td>
+      <td>PESMOS0094</td>
+      <td>20080906-Hindukush</td>
+      <td>Lat: 36.70,Lon: 70.60</td>
+      <td>5.8</td>
+      <td>PIITR0041,PIITR0036</td>
+      <td>2008-09-06 05:47:33</td>
+    </tr>
+    <tr>
+      <th>118</th>
+      <td>2008-10-19</td>
+      <td>PESMOS0119</td>
+      <td>20081019-Sonipat</td>
+      <td>Lat: 29.10,Lon: 76.90</td>
+      <td>3.2</td>
+      <td>PIITR0117</td>
+      <td>2008-10-19 07:56:48</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>2008-10-21</td>
+      <td>PESMOS0104</td>
+      <td>20081021-Kullu</td>
+      <td>Lat: 31.50,Lon: 77.30</td>
+      <td>4.5</td>
+      <td>PIITR0041,PIITR0042,PIITR0063</td>
+      <td>2008-10-21 15:09:06</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>2008-11-19</td>
+      <td>PESMOS0068</td>
+      <td>20081119-Khokhrajhar</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0251</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>216</th>
+      <td>2008-12-02</td>
+      <td>PESMOS0217</td>
+      <td>20081202-Khokhrajhar</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0251</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>2008-12-26</td>
+      <td>PESMOS0061</td>
+      <td>20081226-Diphu</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0244</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>2008-12-31</td>
+      <td>PESMOS0196</td>
+      <td>20081231-Nathpa</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0056</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2009-01-03</td>
+      <td>PESMOS0002</td>
+      <td>20090103-HINDUKUSH REGION,AFGHANISTAN</td>
+      <td>Lat: 36.50,Lon: 70.80</td>
+      <td>6.4</td>
+      <td>PIITR0040</td>
+      <td>2009-01-03 20:23:19</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>2009-01-09</td>
+      <td>PESMOS0045</td>
+      <td>20090109-Kinnaur</td>
+      <td>Lat: 31.70,Lon: 78.30</td>
+      <td>3.8</td>
+      <td>PIITR0056,PIITR0044</td>
+      <td>2009-01-09 12:40:18</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>2009-01-11</td>
+      <td>PESMOS0141</td>
+      <td>20090111-Pithoragarh</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0009</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>2009-01-13</td>
+      <td>PESMOS0043</td>
+      <td>20090113-Delhi</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PDELH0004,PDELH0001</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>2009-01-24</td>
+      <td>PESMOS0147</td>
+      <td>20090124-Nongstoin</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0265</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>121</th>
+      <td>2009-01-31</td>
+      <td>PESMOS0122</td>
+      <td>20090131-Himachal</td>
+      <td>Lat: 32.50,Lon: 75.90</td>
+      <td>3.7</td>
+      <td>PIITR0040,PIITR0037,PIITR0038</td>
+      <td>2009-01-31 03:07:15</td>
+    </tr>
+    <tr>
+      <th>202</th>
+      <td>2009-02-14</td>
+      <td>PESMOS0203</td>
+      <td>20090214-Munsiary</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0029</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>127</th>
+      <td>2009-02-15</td>
+      <td>PESMOS0128</td>
+      <td>20090215-Assam-Meghalara Border</td>
+      <td>Lat: 26.00,Lon: 90.20</td>
+      <td>4.4</td>
+      <td>PIITR0242,PIITR0239,PIITR0240,PIITR0251,PIITR0268</td>
+      <td>2009-02-15 07:35:55</td>
+    </tr>
+    <tr>
+      <th>112</th>
+      <td>2009-02-24</td>
+      <td>PESMOS0113</td>
+      <td>20090224-INDIA( NAGALAND) -- MYANMAR BORD. REG</td>
+      <td>Lat: 25.90,Lon: 94.30</td>
+      <td>4.8</td>
+      <td>PIITR0256,PIITR0246,PIITR0244</td>
+      <td>2009-02-24 17:46:13</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>2009-02-25</td>
+      <td>PESMOS0103</td>
+      <td>20090225-ttarakhand</td>
+      <td>Lat: 30.60,Lon: 79.30</td>
+      <td>3.7</td>
+      <td>PIITR0003</td>
+      <td>2009-02-25 04:04:21</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>2009-03-18</td>
+      <td>PESMOS0074</td>
+      <td>20090318-Uttarkashi,Uttarakhand</td>
+      <td>Lat: 30.90,Lon: 78.20</td>
+      <td>3.3</td>
+      <td>PIITR0013</td>
+      <td>2009-03-18 11:22:42</td>
+    </tr>
+    <tr>
+      <th>185</th>
+      <td>2009-04-04</td>
+      <td>PESMOS0186</td>
+      <td>20090404-Golpara</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0245</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>193</th>
+      <td>2009-04-10</td>
+      <td>PESMOS0194</td>
+      <td>20090410-Giolpara</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0245</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>2009-04-17</td>
+      <td>PESMOS0059</td>
+      <td>20090417-Diphu</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0244</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>2009-04-25</td>
+      <td>PESMOS0062</td>
+      <td>20090425-Kamrup</td>
+      <td>Lat: 26.40,Lon: 91.70</td>
+      <td>4.0</td>
+      <td>PIITR0247,PIITR0261</td>
+      <td>2009-04-25 14:29:29</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>2009-05-04</td>
+      <td>PESMOS0100</td>
+      <td>20090504-Bongaigaon</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0264</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>2009-05-06</td>
+      <td>PESMOS0072</td>
+      <td>20090506-Khokhrajhar</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0251</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>143</th>
+      <td>2009-05-15</td>
+      <td>PESMOS0144</td>
+      <td>20090515-Chamoli, Uttarakhand</td>
+      <td>Lat: 30.50,Lon: 79.30</td>
+      <td>4.1</td>
+      <td>PIITR0003</td>
+      <td>2009-05-15 18:39:22</td>
+    </tr>
+    <tr>
+      <th>211</th>
+      <td>2009-05-16</td>
+      <td>PESMOS0212</td>
+      <td>20090516-Khokhrajhar</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0251</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>2009-06-04</td>
+      <td>PESMOS0055</td>
+      <td>20090604-Chamba</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0002</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>249</th>
+      <td>2009-06-19</td>
+      <td>PESMOS0250</td>
+      <td>20090619-Golpara</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0245</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>138</th>
+      <td>2009-06-22</td>
+      <td>PESMOS0139</td>
+      <td>20090622-Diphu</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0244</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>2009-07-13</td>
+      <td>PESMOS0091</td>
+      <td>20090713-Cooch Vihar</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0235</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>2009-07-17</td>
+      <td>PESMOS0063</td>
+      <td>20090717-Chamba</td>
+      <td>Lat: 32.30,Lon: 76.10</td>
+      <td>3.7</td>
+      <td>PIITR0040,PIITR0037,PIITR0038</td>
+      <td>2009-07-17 11:07:47</td>
+    </tr>
+    <tr>
+      <th>201</th>
+      <td>2009-07-26</td>
+      <td>PESMOS0202</td>
+      <td>20090726-Golpara</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0245</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>144</th>
+      <td>2009-08-03</td>
+      <td>PESMOS0145</td>
+      <td>20090803-Gangtok</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0238</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>2009-08-10</td>
+      <td>PESMOS0019</td>
+      <td>20090810-Andaman Island</td>
+      <td>Lat: 14.10,Lon: 93.01</td>
+      <td>7.8</td>
+      <td>PIITR0129</td>
+      <td>2009-08-10 19:55:35</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>2009-08-11</td>
+      <td>PESMOS0040</td>
+      <td>20090811-Khokhrajhar(N.L.)</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0251</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>2009-08-11</td>
+      <td>PESMOS0020</td>
+      <td>20090811-MYANMAR-India Manipuir Border</td>
+      <td>Lat: 24.40,Lon: 94.80</td>
+      <td>5.6</td>
+      <td>PIITR0248,PIITR0258,PIITR0259,PIITR0247,PIITR0...</td>
+      <td>2009-08-11 21:43:39</td>
+    </tr>
+    <tr>
+      <th>134</th>
+      <td>2009-08-16</td>
+      <td>PESMOS0135</td>
+      <td>20090816-Gangtok</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0238</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>212</th>
+      <td>2009-08-19</td>
+      <td>PESMOS0213</td>
+      <td>20090819-Sonitpur-Assam</td>
+      <td>Lat: 26.60,Lon: 92.50</td>
+      <td>4.9</td>
+      <td>PIITR0247,PIITR0261</td>
+      <td>2009-08-19 10:45:15</td>
+    </tr>
+    <tr>
+      <th>123</th>
+      <td>2009-08-27</td>
+      <td>PESMOS0124</td>
+      <td>20090827-Uttarakhand</td>
+      <td>Lat: 30.00,Lon: 80.00</td>
+      <td>3.9</td>
+      <td>PIITR0023,PIITR0029,PIITR0002</td>
+      <td>2009-08-27 16:54:15</td>
+    </tr>
+    <tr>
+      <th>240</th>
+      <td>2009-08-30</td>
+      <td>PESMOS0241</td>
+      <td>20090830-Manipur meghalaya Border Region</td>
+      <td>Lat: 25.40,Lon: 94.80</td>
+      <td>5.3</td>
+      <td>PIITR0247,PIITR0256,PIITR0261,PIITR0268,PIITR0244</td>
+      <td>2009-08-30 19:27:44</td>
+    </tr>
+    <tr>
+      <th>235</th>
+      <td>2009-09-03</td>
+      <td>PESMOS0236</td>
+      <td>20090903-Miyamar India Border Region</td>
+      <td>Lat: 24.30,Lon: 94.60</td>
+      <td>5.9</td>
+      <td>PIITR0248,PIITR0258,PIITR0240,PIITR0247,PIITR0...</td>
+      <td>2009-09-03 19:51:08</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2009-09-21</td>
+      <td>PESMOS0013</td>
+      <td>20090921-Uttarkashi</td>
+      <td>Lat: 30.90,Lon: 79.10</td>
+      <td>4.7</td>
+      <td>PIITR0023,PIITR0020,PIITR0016,PIITR0028,PIITR0...</td>
+      <td>2009-09-21 09:43:47</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2009-09-21</td>
+      <td>PESMOS0003</td>
+      <td>20090921-Bhutan</td>
+      <td>Lat: 27.30,Lon: 91.50</td>
+      <td>6.2</td>
+      <td>PIITR0259,PIITR0255,PIITR0256,PIITR0240,PIITR0...</td>
+      <td>2009-09-21 08:53:04</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2009-10-03</td>
+      <td>PESMOS0010</td>
+      <td>20091003-Bageshwar</td>
+      <td>Lat: 30.00,Lon: 79.90</td>
+      <td>4.3</td>
+      <td>PIITR0023,PIITR0004,PIITR0002</td>
+      <td>2009-10-03 05:20:54</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2009-10-22</td>
+      <td>PESMOS0005</td>
+      <td>20091022-Hindukush</td>
+      <td>Lat: 36.50,Lon: 71.00</td>
+      <td>6.3</td>
+      <td>PIITR0040,PIITR0051,PIITR0063,PIITR0056,PIITR0053</td>
+      <td>2009-10-22 19:51:25</td>
+    </tr>
+    <tr>
+      <th>117</th>
+      <td>2009-10-27</td>
+      <td>PESMOS0118</td>
+      <td>20091027-Patiala</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0081</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>158</th>
+      <td>2009-10-29</td>
+      <td>PESMOS0159</td>
+      <td>20091029-Bhutan</td>
+      <td>Lat: 27.30,Lon: 91.40</td>
+      <td>5.2</td>
+      <td>PIITR0266,PIITR0240,PIITR0251,PIITR0245,PIITR0268</td>
+      <td>2009-10-29 17:00:35</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>2009-10-29</td>
+      <td>PESMOS0060</td>
+      <td>20091029-Khokhrajhar</td>
+      <td>Lat: 26.60,Lon: 90.00</td>
+      <td>4.2</td>
+      <td>PIITR0266,PIITR0240,PIITR0251,PIITR0245,PIITR0268</td>
+      <td>2009-10-29 19:56:58</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>2009-10-29</td>
+      <td>PESMOS0028</td>
+      <td>20091029-Hindukush</td>
+      <td>Lat: 36.40,Lon: 70.80</td>
+      <td>6.0</td>
+      <td>PIITR0063</td>
+      <td>2009-10-29 17:44:30</td>
+    </tr>
+    <tr>
+      <th>225</th>
+      <td>2009-11-07</td>
+      <td>PESMOS0226</td>
+      <td>20091107-Gangtok</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0238</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>2009-11-07</td>
+      <td>PESMOS0097</td>
+      <td>20091107-Gangtok1</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0238</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>126</th>
+      <td>2009-11-10</td>
+      <td>PESMOS0127</td>
+      <td>20091110-Rampur</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0063</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>166</th>
+      <td>2009-11-16</td>
+      <td>PESMOS0167</td>
+      <td>20091116-Guwahati</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0247</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>251</th>
+      <td>2009-12-03</td>
+      <td>PESMOS0252</td>
+      <td>20091203-Tisa</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0066</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>2009-12-06</td>
+      <td>PESMOS0021</td>
+      <td>20091206-China India Border (J&amp;K)</td>
+      <td>Lat: 35.80,Lon: 77.30</td>
+      <td>5.3</td>
+      <td>PIITR0063</td>
+      <td>2009-12-06 04:33:15</td>
+    </tr>
+    <tr>
+      <th>167</th>
+      <td>2009-12-29</td>
+      <td>PESMOS0168</td>
+      <td>20091229-Myamar India Border</td>
+      <td>Lat: 24.50,Lon: 94.80</td>
+      <td>5.5</td>
+      <td>PIITR0248,PIITR0259,PIITR0240,PIITR0247,PIITR0...</td>
+      <td>2009-12-29 09:01:42</td>
+    </tr>
+    <tr>
+      <th>252</th>
+      <td>2009-12-31</td>
+      <td>PESMOS0253</td>
+      <td>20091231-Bhutan</td>
+      <td>Lat: 27.30,Lon: 91.40</td>
+      <td>5.5</td>
+      <td>PIITR0240,PIITR0247,PIITR0251,PIITR0245,PIITR0268</td>
+      <td>2009-12-31 09:57:00</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>2010-01-11</td>
+      <td>PESMOS0038</td>
+      <td>20100111-Tisa(N.L.)</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0066</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>2010-01-11</td>
+      <td>PESMOS0069</td>
+      <td>20100111-Pithoragarh</td>
+      <td>Lat: 29.70,Lon: 80.00</td>
+      <td>3.9</td>
+      <td>PIITR0004,PIITR0009,PIITR0017</td>
+      <td>2010-01-11 05:15:18</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>2010-01-29</td>
+      <td>PESMOS0015</td>
+      <td>20100129-Gangtok</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0238</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>114</th>
+      <td>2010-02-15</td>
+      <td>PESMOS0115</td>
+      <td>20100215-Golpara</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0245</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>218</th>
+      <td>2010-02-22</td>
+      <td>PESMOS0219</td>
+      <td>20100222-Bageshwar</td>
+      <td>Lat: 30.00,Lon: 80.10</td>
+      <td>4.7</td>
+      <td>PIITR0023,PIITR0027,PIITR0004,PIITR0012,PIITR0...</td>
+      <td>2010-02-22 17:23:43</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>2010-02-24</td>
+      <td>PESMOS0017</td>
+      <td>20100224-Rohtak</td>
+      <td>Lat: 28.60,Lon: 76.90</td>
+      <td>2.5</td>
+      <td>PDELH0004,PDELH0005,PDELH0006,PDELH0007,PDELH0...</td>
+      <td>2010-02-24 19:20:52</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2010-02-25</td>
+      <td>PESMOS0016</td>
+      <td>20100225-Gangtok</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0238</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>242</th>
+      <td>2010-02-26</td>
+      <td>PESMOS0243</td>
+      <td>20100226-Tibet</td>
+      <td>Lat: 28.50,Lon: 86.70</td>
+      <td>5.4</td>
+      <td>PIITR0240,PIITR0247,PIITR0251,PIITR0245,PIITR0...</td>
+      <td>2010-02-26 04:42:33</td>
+    </tr>
+    <tr>
+      <th>233</th>
+      <td>2010-03-12</td>
+      <td>PESMOS0234</td>
+      <td>20100312-Myammar</td>
+      <td>Lat: 23.00,Lon: 94.50</td>
+      <td>5.6</td>
+      <td>PIITR0248,PIITR0240,PIITR0247,PIITR0268,PIITR0245</td>
+      <td>2010-03-12 23:19:54</td>
+    </tr>
+    <tr>
+      <th>229</th>
+      <td>2010-03-14</td>
+      <td>PESMOS0230</td>
+      <td>20100314-Punjab Himachal Border</td>
+      <td>Lat: 31.70,Lon: 76.10</td>
+      <td>4.6</td>
+      <td>PIITR0027,PIITR0080,PIITR0083,PIITR0090,PIITR0...</td>
+      <td>2010-03-14 06:53:21</td>
+    </tr>
+    <tr>
+      <th>184</th>
+      <td>2010-03-25</td>
+      <td>PESMOS0185</td>
+      <td>20100325-Tisa</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0066</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2010-03-28</td>
+      <td>PESMOS0001</td>
+      <td>20100328-Tura</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0268</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>2010-05-01</td>
+      <td>PESMOS0075</td>
+      <td>20100501-Distt. Bageshwar Uttarakhand</td>
+      <td>Lat: 29.90,Lon: 80.10</td>
+      <td>4.6</td>
+      <td>PIITR0023,PIITR0027,PIITR0019,PIITR0029,PIITR0...</td>
+      <td>2009-05-01 22:36:25</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>2010-05-03</td>
+      <td>PESMOS0071</td>
+      <td>20100503-Uttarakhand</td>
+      <td>Lat: 30.40,Lon: 78.40</td>
+      <td>3.5</td>
+      <td>PIITR0016,PIITR0014,PIITR0027,PIITR0011</td>
+      <td>2010-05-03 17:15:08</td>
+    </tr>
+    <tr>
+      <th>130</th>
+      <td>2010-05-09</td>
+      <td>PESMOS0131</td>
+      <td>20100509-Tinsukia</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0260</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>2010-05-26</td>
+      <td>PESMOS0022</td>
+      <td>20100526-Gangtok</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0238</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>122</th>
+      <td>2010-05-28</td>
+      <td>PESMOS0123</td>
+      <td>20100528-Himachal Pradesh</td>
+      <td>Lat: 31.20,Lon: 77.90</td>
+      <td>4.8</td>
+      <td>PIITR0052,PIITR0014,PIITR0027,PIITR0047</td>
+      <td>2010-05-28 07:25:06</td>
+    </tr>
+    <tr>
+      <th>154</th>
+      <td>2010-05-31</td>
+      <td>PESMOS0155</td>
+      <td>20100531-Almora District</td>
+      <td>Lat: 30.00,Lon: 79.80</td>
+      <td>3.6</td>
+      <td>PIITR0004,PIITR0009</td>
+      <td>2010-05-31 11:37:04</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>2010-06-11</td>
+      <td>PESMOS0149</td>
+      <td>20100611-Guwahati</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0247</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>2010-06-12</td>
+      <td>PESMOS0033</td>
+      <td>20100612-OFF WEST COAST OF NICOBAR ISLANDS,INDIA</td>
+      <td>Lat:  7.90,Lon: 91.90</td>
+      <td>7.8</td>
+      <td>PIITR0129</td>
+      <td>2010-06-12 19:26:46</td>
+    </tr>
+    <tr>
+      <th>171</th>
+      <td>2010-06-13</td>
+      <td>PESMOS0172</td>
+      <td>20100613-Tura</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0268</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>2010-06-19</td>
+      <td>PESMOS0053</td>
+      <td>20100619- Guwahati</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0247</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>135</th>
+      <td>2010-06-21</td>
+      <td>PESMOS0136</td>
+      <td>20100621-Chamba</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0037</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>2010-06-21</td>
+      <td>PESMOS0054</td>
+      <td>20100621-Tisa</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0066</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>2010-07-06</td>
+      <td>PESMOS0089</td>
+      <td>20100706-Nepal India Border Region</td>
+      <td>Lat: 29.80,Lon: 80.40</td>
+      <td>5.1</td>
+      <td>PIITR0004,PIITR0029</td>
+      <td>2010-07-06 19:08:20</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>2010-07-10</td>
+      <td>PESMOS0018</td>
+      <td>20100710-Almora, Uttarakhand</td>
+      <td>Lat: 29.90,Lon: 79.60</td>
+      <td>4.1</td>
+      <td>PIITR0023,PIITR0002,PIITR0027,PIITR0019</td>
+      <td>2010-07-10 03:16:20</td>
+    </tr>
+    <tr>
+      <th>248</th>
+      <td>2010-07-26</td>
+      <td>PESMOS0249</td>
+      <td>20100726-Barpeta</td>
+      <td>Lat: 26.50,Lon: 91.30</td>
+      <td>4.1</td>
+      <td>PIITR0247</td>
+      <td>2010-07-26 19:43:27</td>
+    </tr>
+    <tr>
+      <th>236</th>
+      <td>2010-08-03</td>
+      <td>PESMOS0237</td>
+      <td>20100803-ANDAMAN ISLANDS REGION</td>
+      <td>Lat: 11.20,Lon: 93.20</td>
+      <td>5.2</td>
+      <td>PIITR0129</td>
+      <td>2010-08-03 01:48:11</td>
+    </tr>
+    <tr>
+      <th>247</th>
+      <td>2010-08-08</td>
+      <td>PESMOS0248</td>
+      <td>20100808-Amritsar</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0067</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>2010-08-14</td>
+      <td>PESMOS0198</td>
+      <td>20100814-Dimapur</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0278</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>163</th>
+      <td>2010-08-20</td>
+      <td>PESMOS0164</td>
+      <td>20100820-Guwahati</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0247</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>152</th>
+      <td>2010-09-11</td>
+      <td>PESMOS0153</td>
+      <td>20100911-Meghalaya -Assam border</td>
+      <td>Lat: 25.90,Lon: 90.20</td>
+      <td>5.0</td>
+      <td>PIITR0240,PIITR0247,PIITR0251</td>
+      <td>2010-09-11 07:02:09</td>
+    </tr>
+    <tr>
+      <th>120</th>
+      <td>2010-09-17</td>
+      <td>PESMOS0121</td>
+      <td>20100917-Gangtok(N.L.)</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0238</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>2010-09-17</td>
+      <td>PESMOS0088</td>
+      <td>20100917-Hindukush Rerion Afganistan</td>
+      <td>Lat: 36.50,Lon: 70.80</td>
+      <td>6.5</td>
+      <td>PIITR0027,PIITR0040,PIITR0016,PIITR0014,PIITR0...</td>
+      <td>2010-09-17 19:21:09</td>
+    </tr>
+    <tr>
+      <th>131</th>
+      <td>2010-10-05</td>
+      <td>PESMOS0132</td>
+      <td>20101005-Darjeeling</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0233</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>2010-11-07</td>
+      <td>PESMOS0081</td>
+      <td>20101107-Chamoli</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0003</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>2010-12-12</td>
+      <td>PESMOS0080</td>
+      <td>20101212-Manipur Assam Border</td>
+      <td>Lat: 25.00,Lon: 93.30</td>
+      <td>4.8</td>
+      <td>PIITR0255,PIITR0250</td>
+      <td>2010-12-12 01:40:04</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>2010-12-17</td>
+      <td>PESMOS0032</td>
+      <td>20101217-Pithoragarh</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0009</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>232</th>
+      <td>2011-01-18</td>
+      <td>PESMOS0233</td>
+      <td>20110118 -Southwestern Pakistan</td>
+      <td>Lat: 28.90,Lon: 64.00</td>
+      <td>7.4</td>
+      <td>PDELH0013,PDELH0017,PDELH0001,PDELH0015,PDELH0...</td>
+      <td>2011-01-18 20:23:27</td>
+    </tr>
+    <tr>
+      <th>137</th>
+      <td>2011-01-26</td>
+      <td>PESMOS0138</td>
+      <td>20110126- Sonepat Baghpat Border</td>
+      <td>Lat: 29.00,Lon: 77.20</td>
+      <td>3.2</td>
+      <td>PDELH0001</td>
+      <td>2011-01-26 03:06:45</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>2011-02-04</td>
+      <td>PESMOS0056</td>
+      <td>20110204- India Myammar Border</td>
+      <td>Lat: 24.80,Lon: 94.60</td>
+      <td>6.4</td>
+      <td>PIITR0249,PIITR0255,PIITR0257,PIITR0247,PIITR0...</td>
+      <td>2011-02-04 13:53:39</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>2011-02-10</td>
+      <td>PESMOS0030</td>
+      <td>20110210-Gangtok</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0238</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>198</th>
+      <td>2011-02-18</td>
+      <td>PESMOS0199</td>
+      <td>20110218-Delhi</td>
+      <td>Lat: 28.60,Lon: 77.30</td>
+      <td>2.3</td>
+      <td>PDELH0008,PDELH0001</td>
+      <td>2011-02-18 14:44:14</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>2011-03-14</td>
+      <td>PESMOS0084</td>
+      <td>20110314-Chamoli</td>
+      <td>Lat: 30.50,Lon: 79.10</td>
+      <td>3.3</td>
+      <td>PIITR0003</td>
+      <td>2011-03-14 09:01:29</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2011-03-21</td>
+      <td>PESMOS0012</td>
+      <td>20110321-Hindukush Region</td>
+      <td>Lat: 36.50,Lon: 70.90</td>
+      <td>5.7</td>
+      <td>PIITR0127,PIITR0014</td>
+      <td>2011-03-21 09:48:59</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>2011-04-04</td>
+      <td>PESMOS0070</td>
+      <td>20110404-India Nepal Border</td>
+      <td>Lat: 29.60,Lon: 80.80</td>
+      <td>5.7</td>
+      <td>PIITR0034,PDELH0004,PIITR0030,PIITR0019,PIITR0...</td>
+      <td>2011-04-04 11:31:40</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>2011-05-04</td>
+      <td>PESMOS0024</td>
+      <td>20110504-India Nepal Border</td>
+      <td>Lat: 30.20,Lon: 80.40</td>
+      <td>5.0</td>
+      <td>PIITR0029</td>
+      <td>2011-05-04 20:57:15</td>
+    </tr>
+    <tr>
+      <th>237</th>
+      <td>2011-05-13</td>
+      <td>PESMOS0238</td>
+      <td>20110513-Barkot</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0014</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>2011-06-03</td>
+      <td>PESMOS0095</td>
+      <td>20110603-NEPAL - SIKKIM (INDIA) BORDER REGION</td>
+      <td>Lat: 27.50,Lon: 88.00</td>
+      <td>4.9</td>
+      <td>PIITR0233,PIITR0238,PIITR0214,PIITR0237</td>
+      <td>2011-06-03 00:53:21</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>2011-06-15</td>
+      <td>PESMOS0092</td>
+      <td>20110615-PITHORAGARH, UTTARAKHAND</td>
+      <td>Lat: 30.60,Lon: 80.10</td>
+      <td>3.4</td>
+      <td>PIITR0023,PIITR0029</td>
+      <td>2011-06-15 00:59:28</td>
+    </tr>
+    <tr>
+      <th>107</th>
+      <td>2011-06-20</td>
+      <td>PESMOS0108</td>
+      <td>20110620-Chamoli(N.L.)</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0003</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>2011-06-20</td>
+      <td>PESMOS0110</td>
+      <td>20110620-Chamoli,Uttarakhand</td>
+      <td>Lat: 30.50,Lon: 79.40</td>
+      <td>4.6</td>
+      <td>PIITR0035,PIITR0027,PIITR0032,PIITR0019,PIITR0...</td>
+      <td>2011-06-20 06:27:18</td>
+    </tr>
+    <tr>
+      <th>125</th>
+      <td>2011-06-23</td>
+      <td>PESMOS0126</td>
+      <td>20110623-UTTRAKHAND (INDIA) - NEPAL BORDER REGION</td>
+      <td>Lat: 30.00,Lon: 80.50</td>
+      <td>3.2</td>
+      <td>PIITR0017</td>
+      <td>2011-06-23 22:13:46</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>2011-07-28</td>
+      <td>PESMOS0023</td>
+      <td>20110728-J &amp; K</td>
+      <td>Lat: 33.30,Lon: 76.00</td>
+      <td>4.4</td>
+      <td>PIITR0064</td>
+      <td>2011-07-28 18:42:34</td>
+    </tr>
+    <tr>
+      <th>230</th>
+      <td>2011-08-23</td>
+      <td>PESMOS0231</td>
+      <td>20110823-Delhi</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PDELH0008,PDELH0001,PDELH0003</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>2011-08-28</td>
+      <td>PESMOS0082</td>
+      <td>20110828-Uttarkashi</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0013</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>215</th>
+      <td>2011-09-06</td>
+      <td>PESMOS0216</td>
+      <td>20110906-Dharchula</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0017</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>2011-09-07</td>
+      <td>PESMOS0165</td>
+      <td>20110907-Sonipat</td>
+      <td>Lat: 28.60,Lon: 77.00</td>
+      <td>4.2</td>
+      <td>PDELH0013,PDELH0017,PDELH0001,PIITR0102,PDELH0...</td>
+      <td>2011-09-07 17:58:18</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>2011-09-18</td>
+      <td>PESMOS0197</td>
+      <td>20110918(157)-INDIA(SIKKIM)--NEPAL BORDER REGION3</td>
+      <td>Lat: 27.60,Lon: 88.40</td>
+      <td>4.2</td>
+      <td>PIITR0238</td>
+      <td>2011-09-18 21:51:52</td>
+    </tr>
+    <tr>
+      <th>170</th>
+      <td>2011-09-18</td>
+      <td>PESMOS0171</td>
+      <td>20110918-Gangtok</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0238</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>2011-09-18</td>
+      <td>PESMOS0166</td>
+      <td>20110918-Gangtok1</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0238</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>191</th>
+      <td>2011-09-18</td>
+      <td>PESMOS0192</td>
+      <td>20110918(154)-INDIA(SIKKIM)--NEPAL BORDER REGION</td>
+      <td>Lat: 27.60,Lon: 88.20</td>
+      <td>6.8</td>
+      <td>PIITR0009,PIITR0004,PIITR0257,PIITR0250,PIITR0...</td>
+      <td>2011-09-18 12:40:47</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>2011-09-18</td>
+      <td>PESMOS0093</td>
+      <td>20110918(155)-INDIA(SIKKIM)--NEPAL BORDER REGION1</td>
+      <td>Lat: 27.60,Lon: 88.50</td>
+      <td>5.0</td>
+      <td>PIITR0238,PIITR0235</td>
+      <td>2011-09-18 13:11:59</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>2011-09-18</td>
+      <td>PESMOS0050</td>
+      <td>20110918(156)-INDIA(SIKKIM)--NEPAL BORDER REGION2</td>
+      <td>Lat: 27.50,Lon: 88.40</td>
+      <td>4.5</td>
+      <td>PIITR0238</td>
+      <td>2011-09-18 13:54:17</td>
+    </tr>
+    <tr>
+      <th>192</th>
+      <td>2011-09-21</td>
+      <td>PESMOS0193</td>
+      <td>20110921-UTTARKASHI DIST.,UTTARANCHAL</td>
+      <td>Lat: 30.90,Lon: 78.30</td>
+      <td>3.1</td>
+      <td>PIITR0014</td>
+      <td>2011-09-21 02:24:36</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2011-09-22</td>
+      <td>PESMOS0006</td>
+      <td>20110922-Sikkim</td>
+      <td>Lat: 27.60,Lon: 88.40</td>
+      <td>3.9</td>
+      <td>PIITR0238</td>
+      <td>2011-09-22 16:44:43</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>2011-09-24</td>
+      <td>PESMOS0041</td>
+      <td>20110924-UTTARKASHI DIST, UTTARANCHAL</td>
+      <td>Lat: 30.90,Lon: 78.30</td>
+      <td>3.0</td>
+      <td>PIITR0014</td>
+      <td>2011-09-24 14:32:18</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>2011-09-29</td>
+      <td>PESMOS0077</td>
+      <td>20110929-Barkot</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0014</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>209</th>
+      <td>2011-10-26</td>
+      <td>PESMOS0210</td>
+      <td>20111026-Mandi</td>
+      <td>Lat: 31.50,Lon: 76.80</td>
+      <td>3.5</td>
+      <td>PIITR0065</td>
+      <td>2011-10-26 16:17:32</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>2011-11-21</td>
+      <td>PESMOS0047</td>
+      <td>20111121-INdia-Myanmar Border</td>
+      <td>Lat: 25.10,Lon: 95.30</td>
+      <td>5.8</td>
+      <td>PIITR0247</td>
+      <td>2011-11-21 03:15:33</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>2012-01-16</td>
+      <td>PESMOS0076</td>
+      <td>20120116-Pauri</td>
+      <td>Lat: 29.70,Lon: 78.90</td>
+      <td>3.6</td>
+      <td>PIITR0008</td>
+      <td>2012-01-16 05:01:00</td>
+    </tr>
+    <tr>
+      <th>226</th>
+      <td>2012-02-09</td>
+      <td>PESMOS0227</td>
+      <td>20120209-UTTARKASHI DISTRICT, UTTARAKHAND</td>
+      <td>Lat: 30.90,Lon: 78.20</td>
+      <td>5.0</td>
+      <td>PIITR0041,PIITR0017,PIITR0065,PIITR0015,PIITR0013</td>
+      <td>2011-02-09 19:17:29</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>2012-02-26</td>
+      <td>PESMOS0179</td>
+      <td>20120226-Nepal Border</td>
+      <td>Lat: 29.60,Lon: 80.80</td>
+      <td>4.3</td>
+      <td>PIITR0030,PIITR0033</td>
+      <td>2012-02-26 23:08:42</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>2012-03-05</td>
+      <td>PESMOS0105</td>
+      <td>20120305-Bahadurgarh</td>
+      <td>Lat: 28.70,Lon: 76.60</td>
+      <td>4.9</td>
+      <td>PDELH0013,PDELH0005,PDELH0006,PIITR0107,PIITR0...</td>
+      <td>2012-03-05 07:41:05</td>
+    </tr>
+    <tr>
+      <th>110</th>
+      <td>2012-03-12</td>
+      <td>PESMOS0111</td>
+      <td>20120312-BAGHPAT</td>
+      <td>Lat: 28.90,Lon: 77.30</td>
+      <td>3.5</td>
+      <td>PDELH0006,PDELH0001,PDELH0002,PDELH0003</td>
+      <td>2012-03-12 22:07:20</td>
+    </tr>
+    <tr>
+      <th>142</th>
+      <td>2012-03-27</td>
+      <td>PESMOS0143</td>
+      <td>20120327-India Nepal Border</td>
+      <td>Lat: 26.10,Lon: 87.80</td>
+      <td>4.9</td>
+      <td>PIITR0203</td>
+      <td>2012-03-27 23:40:08</td>
+    </tr>
+    <tr>
+      <th>115</th>
+      <td>2012-05-04</td>
+      <td>PESMOS0116</td>
+      <td>20120504-Dibrugarh</td>
+      <td>Lat: 27.50,Lon: 95.10</td>
+      <td>4.4</td>
+      <td>PIITR0256</td>
+      <td>2012-05-04 20:09:26</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>2012-05-10</td>
+      <td>PESMOS0150</td>
+      <td>20120510-Chamoli</td>
+      <td>Lat: 30.20,Lon: 79.40</td>
+      <td>3.9</td>
+      <td>PIITR0019</td>
+      <td>2012-05-10 22:00:40</td>
+    </tr>
+    <tr>
+      <th>246</th>
+      <td>2012-05-11</td>
+      <td>PESMOS0247</td>
+      <td>20120511-Assam</td>
+      <td>Lat: 26.60,Lon: 93.00</td>
+      <td>5.4</td>
+      <td>PIITR0249,PIITR0251,PIITR0246</td>
+      <td>2012-05-11 18:41:28</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>2012-06-21</td>
+      <td>PESMOS0035</td>
+      <td>20120621-Dharchula</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0017</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2012-07-01</td>
+      <td>PESMOS0008</td>
+      <td>20120701-Nagaland</td>
+      <td>Lat: 25.70,Lon: 94.60</td>
+      <td>5.8</td>
+      <td>PIITR0249,PIITR0260,PIITR0246</td>
+      <td>2012-07-01 04:13:52</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>2012-07-10</td>
+      <td>PESMOS0052</td>
+      <td>20120710-Assam</td>
+      <td>Lat: 26.50,Lon: 93.20</td>
+      <td>4.5</td>
+      <td>PIITR0255</td>
+      <td>2012-07-10 13:03:41</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>2012-07-12</td>
+      <td>PESMOS0039</td>
+      <td>20120712-Hindukush</td>
+      <td>Lat: 36.50,Lon: 70.90</td>
+      <td>6.3</td>
+      <td>PIITR0037</td>
+      <td>2009-07-12 14:00:32</td>
+    </tr>
+    <tr>
+      <th>175</th>
+      <td>2012-07-14</td>
+      <td>PESMOS0176</td>
+      <td>20120714-Nagaland</td>
+      <td>Lat: 25.50,Lon: 94.20</td>
+      <td>5.5</td>
+      <td>PIITR0255,PIITR0249,PIITR0246</td>
+      <td>2012-07-14 19:55:18</td>
+    </tr>
+    <tr>
+      <th>108</th>
+      <td>2012-07-28</td>
+      <td>PESMOS0109</td>
+      <td>20120728-NEPAL -INDIA (UTTRAKHAND)_BORDER REGION</td>
+      <td>Lat: 29.70,Lon: 80.70</td>
+      <td>4.5</td>
+      <td>PIITR0030</td>
+      <td>2012-07-28 05:48:06</td>
+    </tr>
+    <tr>
+      <th>174</th>
+      <td>2012-08-04</td>
+      <td>PESMOS0175</td>
+      <td>20120804-Pithoragarh</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0009</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>157</th>
+      <td>2012-08-13</td>
+      <td>PESMOS0158</td>
+      <td>20120813-J&amp;K Border</td>
+      <td>Lat: 34.80,Lon: 73.70</td>
+      <td>5.2</td>
+      <td>PIITR0053</td>
+      <td>2012-08-13 20:32:59</td>
+    </tr>
+    <tr>
+      <th>204</th>
+      <td>2012-08-19</td>
+      <td>PESMOS0205</td>
+      <td>20120819-Tejpur</td>
+      <td>Lat: 26.70,Lon: 92.50</td>
+      <td>5.0</td>
+      <td>PIITR0259</td>
+      <td>2012-08-19 09:24:49</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>2012-08-19</td>
+      <td>PESMOS0031</td>
+      <td>20120819-Sonitpur</td>
+      <td>Lat: 26.70,Lon: 92.60</td>
+      <td>4.0</td>
+      <td>PIITR0259</td>
+      <td>2012-08-19 19:04:56</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>2012-08-23</td>
+      <td>PESMOS0044</td>
+      <td>20120823-Nepal</td>
+      <td>Lat: 28.40,Lon: 82.70</td>
+      <td>5.0</td>
+      <td>PIITR0004,PIITR0030,PIITR0012</td>
+      <td>2012-08-23 16:30:19</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2012-10-02</td>
+      <td>PESMOS0009</td>
+      <td>20121002-Sonitpur</td>
+      <td>Lat: 26.90,Lon: 92.80</td>
+      <td>5.1</td>
+      <td>PIITR0255,PIITR0257,PIITR0259</td>
+      <td>2012-10-02 18:37:39</td>
+    </tr>
+    <tr>
+      <th>228</th>
+      <td>2012-10-02</td>
+      <td>PESMOS0229</td>
+      <td>20121002-Lahul Spiti1</td>
+      <td>Lat: 32.30,Lon: 76.30</td>
+      <td>4.9</td>
+      <td>PIITR0037,PIITR0063</td>
+      <td>2012-10-02 08:34:52</td>
+    </tr>
+    <tr>
+      <th>161</th>
+      <td>2012-10-02</td>
+      <td>PESMOS0162</td>
+      <td>20121002-Sonitpur-1</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0259</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>210</th>
+      <td>2012-10-02</td>
+      <td>PESMOS0211</td>
+      <td>20121002-Lahul Spiti</td>
+      <td>Lat: 32.40,Lon: 76.40</td>
+      <td>4.5</td>
+      <td>PIITR0037</td>
+      <td>2012-10-02 03:45:28</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>2012-10-03</td>
+      <td>PESMOS0079</td>
+      <td>20121003-Lahul Spiti2</td>
+      <td>Lat: 32.40,Lon: 76.30</td>
+      <td>3.4</td>
+      <td>PIITR0037</td>
+      <td>2012-10-03 17:48:28</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>2012-10-03</td>
+      <td>PESMOS0096</td>
+      <td>20121003-Lahul Spiti1</td>
+      <td>Lat: 32.40,Lon: 76.30</td>
+      <td>3.6</td>
+      <td>PIITR0037</td>
+      <td>2012-10-03 10:49:28</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>2012-10-03</td>
+      <td>PESMOS0042</td>
+      <td>20121003-Lahul Spiti</td>
+      <td>Lat: 32.40,Lon: 76.30</td>
+      <td>3.8</td>
+      <td>PIITR0037</td>
+      <td>2012-10-03 10:04:34</td>
+    </tr>
+    <tr>
+      <th>213</th>
+      <td>2012-10-30</td>
+      <td>PESMOS0214</td>
+      <td>20121030-Morigaon</td>
+      <td>Lat: 26.20,Lon: 92.40</td>
+      <td>3.9</td>
+      <td>PIITR0255</td>
+      <td>2012-10-30 01:40:24</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>2012-11-06</td>
+      <td>PESMOS0057</td>
+      <td>20121106-Kangra</td>
+      <td>Lat: 32.30,Lon: 76.20</td>
+      <td>4.1</td>
+      <td>PIITR0037</td>
+      <td>2012-11-06 12:21:12</td>
+    </tr>
+    <tr>
+      <th>182</th>
+      <td>2012-11-11</td>
+      <td>PESMOS0183</td>
+      <td>20121111-Kangra</td>
+      <td>Lat: 32.30,Lon: 76.20</td>
+      <td>4.0</td>
+      <td>PIITR0037</td>
+      <td>2012-11-11 20:23:12</td>
+    </tr>
+    <tr>
+      <th>205</th>
+      <td>2012-11-11</td>
+      <td>PESMOS0206</td>
+      <td>20121111- Western Nepal</td>
+      <td>Lat: 29.20,Lon: 81.50</td>
+      <td>5.0</td>
+      <td>PIITR0004,PIITR0030,PIITR0009</td>
+      <td>2012-11-11 18:39:19</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>2012-11-15</td>
+      <td>PESMOS0026</td>
+      <td>20121115-Bageshwar</td>
+      <td>Lat: 30.20,Lon: 80.10</td>
+      <td>3.0</td>
+      <td>PIITR0023</td>
+      <td>2012-11-15 06:46:07</td>
+    </tr>
+    <tr>
+      <th>223</th>
+      <td>2012-11-19</td>
+      <td>PESMOS0224</td>
+      <td>20121119-Rohtak</td>
+      <td>Lat: 28.70,Lon: 76.60</td>
+      <td>3.5</td>
+      <td>PIITR0115</td>
+      <td>2012-11-19 06:25:21</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>2012-11-27</td>
+      <td>PESMOS0148</td>
+      <td>20121127-Uttarkashi</td>
+      <td>Lat: 30.90,Lon: 78.40</td>
+      <td>4.8</td>
+      <td>PIITR0016,PIITR0015,PIITR0013,PIITR0011</td>
+      <td>2012-11-27 12:15:15</td>
+    </tr>
+    <tr>
+      <th>129</th>
+      <td>2012-11-30</td>
+      <td>PESMOS0130</td>
+      <td>20121130-Sikkim</td>
+      <td>Lat: 27.30,Lon: 88.30</td>
+      <td>4.1</td>
+      <td>PIITR0233</td>
+      <td>2012-11-30 19:39:29</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>2012-12-19</td>
+      <td>PESMOS0027</td>
+      <td>20121219-Jhajjar</td>
+      <td>Lat: 28.60,Lon: 76.80</td>
+      <td>2.9</td>
+      <td>PDELH0004</td>
+      <td>2012-12-19 22:32:00</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>2012-12-22</td>
+      <td>PESMOS0170</td>
+      <td>20121222-Myanmar</td>
+      <td>Lat: 22.50,Lon: 94.80</td>
+      <td>5.7</td>
+      <td>PIITR0255</td>
+      <td>2012-12-22 16:41:44</td>
+    </tr>
+    <tr>
+      <th>159</th>
+      <td>2013-01-02</td>
+      <td>PESMOS0160</td>
+      <td>20130102-Nepal</td>
+      <td>Lat: 29.40,Lon: 81.10</td>
+      <td>4.8</td>
+      <td>PIITR0009,PIITR0030</td>
+      <td>2013-01-02 17:42:15</td>
+    </tr>
+    <tr>
+      <th>203</th>
+      <td>2013-01-07</td>
+      <td>PESMOS0204</td>
+      <td>20130107-Arunachal Pradesh</td>
+      <td>Lat: 28.10,Lon: 94.30</td>
+      <td>4.5</td>
+      <td>PIITR0260</td>
+      <td>2013-01-07 05:32:46</td>
+    </tr>
+    <tr>
+      <th>153</th>
+      <td>2013-01-09</td>
+      <td>PESMOS0154</td>
+      <td>20130109-Myanmar</td>
+      <td>Lat: 25.40,Lon: 94.90</td>
+      <td>5.9</td>
+      <td>PIITR0259,PIITR0255,PIITR0256,PIITR0251,PIITR0...</td>
+      <td>2013-01-09 01:41:52</td>
+    </tr>
+    <tr>
+      <th>194</th>
+      <td>2013-01-09</td>
+      <td>PESMOS0195</td>
+      <td>20130109-Nepal</td>
+      <td>Lat: 29.75,Lon: 81.74</td>
+      <td>5.0</td>
+      <td>PIITR0004,PIITR0030,PIITR0009,PIITR0033</td>
+      <td>2013-01-09 07:44:20</td>
+    </tr>
+    <tr>
+      <th>139</th>
+      <td>2013-01-10</td>
+      <td>PESMOS0140</td>
+      <td>20130110-Pithoragarh</td>
+      <td>Lat: 30.10,Lon: 80.40</td>
+      <td>3.2</td>
+      <td>PIITR0009</td>
+      <td>2013-01-10 15:16:13</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>2013-01-29</td>
+      <td>PESMOS0051</td>
+      <td>20130129-Nepal</td>
+      <td>Lat: 30.00,Lon: 81.60</td>
+      <td>4.0</td>
+      <td>PIITR0009</td>
+      <td>2013-01-29 19:42:52</td>
+    </tr>
+    <tr>
+      <th>220</th>
+      <td>2013-02-11</td>
+      <td>PESMOS0221</td>
+      <td>20130211-Uttarkashi</td>
+      <td>Lat: 31.00,Lon: 78.40</td>
+      <td>4.3</td>
+      <td>PIITR0015,PIITR0027,PIITR0013</td>
+      <td>2013-02-11 10:48:55</td>
+    </tr>
+    <tr>
+      <th>222</th>
+      <td>2013-02-17</td>
+      <td>PESMOS0223</td>
+      <td>20130217-Uttarkashi</td>
+      <td>Lat: 30.90,Lon: 78.40</td>
+      <td>3.2</td>
+      <td>PIITR0013</td>
+      <td>2013-02-17 16:27:07</td>
+    </tr>
+    <tr>
+      <th>190</th>
+      <td>2013-02-28</td>
+      <td>PESMOS0191</td>
+      <td>20130228-Chamba</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0002</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>2013-03-02</td>
+      <td>PESMOS0029</td>
+      <td>20130302-Karimganj</td>
+      <td>Lat: 24.80,Lon: 92.20</td>
+      <td>5.2</td>
+      <td>PIITR0255,PIITR0239</td>
+      <td>2013-03-02 01:30:40</td>
+    </tr>
+    <tr>
+      <th>179</th>
+      <td>2013-03-31</td>
+      <td>PESMOS0180</td>
+      <td>20130331-Pithoragarh</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0009</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>200</th>
+      <td>2013-04-06</td>
+      <td>PESMOS0201</td>
+      <td>20130406-Rudraprayag</td>
+      <td>Lat: 30.50,Lon: 79.10</td>
+      <td>4.3</td>
+      <td>PIITR0013</td>
+      <td>2005-04-06 22:29:31</td>
+    </tr>
+    <tr>
+      <th>206</th>
+      <td>2013-04-10</td>
+      <td>PESMOS0207</td>
+      <td>20130410-Rohtak</td>
+      <td>Lat: 29.00,Lon: 76.60</td>
+      <td>3.5</td>
+      <td>PDELH0002</td>
+      <td>2012-04-10 20:10:01</td>
+    </tr>
+    <tr>
+      <th>155</th>
+      <td>2013-04-11</td>
+      <td>PESMOS0156</td>
+      <td>20130411-Delhi</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PDELH0004,PDELH0008,PDELH0003</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>128</th>
+      <td>2013-04-16</td>
+      <td>PESMOS0129</td>
+      <td>20130416-Assam</td>
+      <td>Lat: 26.30,Lon: 92.00</td>
+      <td>4.6</td>
+      <td>PIITR0243,PIITR0255,PIITR0239,PIITR0259</td>
+      <td>2013-04-16 01:23:19</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>2013-04-16</td>
+      <td>PESMOS0014</td>
+      <td>20130416-iran-pakistan</td>
+      <td>Lat: 28.00,Lon: 62.10</td>
+      <td>7.8</td>
+      <td>PDELH0007,PDELH0016,PDELH0002,PDELH0003,PIITR0...</td>
+      <td>2013-04-16 10:44:11</td>
+    </tr>
+    <tr>
+      <th>199</th>
+      <td>2013-05-01</td>
+      <td>PESMOS0200</td>
+      <td>20130501-East Srinagar</td>
+      <td>Lat: 33.10,Lon: 75.80</td>
+      <td>5.8</td>
+      <td>PIITR0085,PIITR0078,PIITR0037,PIITR0027,PIITR0...</td>
+      <td>2013-05-01 06:57:12</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>2013-05-01</td>
+      <td>PESMOS0025</td>
+      <td>20130501-JK-Himachal Border</td>
+      <td>Lat: 33.10,Lon: 75.80</td>
+      <td>5.8</td>
+      <td>PIITR0037,PIITR0027,PIITR0127,PIITR0015,PIITR0...</td>
+      <td>2013-05-01 06:57:12</td>
+    </tr>
+    <tr>
+      <th>168</th>
+      <td>2013-06-04</td>
+      <td>PESMOS0169</td>
+      <td>20130604-Chamba</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0002</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>2013-06-04</td>
+      <td>PESMOS0058</td>
+      <td>20130604-Lahul Spiti</td>
+      <td>Lat: 32.70,Lon: 76.70</td>
+      <td>4.8</td>
+      <td>PIITR0037</td>
+      <td>2013-06-04 17:34:44</td>
+    </tr>
+    <tr>
+      <th>188</th>
+      <td>2013-06-05</td>
+      <td>PESMOS0189</td>
+      <td>20130605-Chamba</td>
+      <td>Lat: 32.80,Lon: 76.30</td>
+      <td>4.5</td>
+      <td>PIITR0037</td>
+      <td>2013-06-05 22:04:00</td>
+    </tr>
+    <tr>
+      <th>160</th>
+      <td>2013-06-12</td>
+      <td>PESMOS0161</td>
+      <td>20130612-Chamba</td>
+      <td>Lat:  0.00,Lon:  0.00</td>
+      <td>0.0</td>
+      <td>PIITR0002</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>2013-07-09</td>
+      <td>PESMOS0046</td>
+      <td>20130709-HP-JK Border</td>
+      <td>Lat: 32.90,Lon: 78.40</td>
+      <td>5.1</td>
+      <td>PIITR0037</td>
+      <td>2013-07-09 13:49:13</td>
+    </tr>
+    <tr>
+      <th>116</th>
+      <td>2013-07-13</td>
+      <td>PESMOS0117</td>
+      <td>20130713-Kangra</td>
+      <td>Lat: 32.20,Lon: 76.30</td>
+      <td>4.5</td>
+      <td>PIITR0037</td>
+      <td>2013-07-13 17:49:33</td>
+    </tr>
+    <tr>
+      <th>181</th>
+      <td>2013-07-15</td>
+      <td>PESMOS0182</td>
+      <td>20130715-Lahul Spiti</td>
+      <td>Lat: 32.60,Lon: 76.70</td>
+      <td>4.4</td>
+      <td>PIITR0037</td>
+      <td>2013-07-15 17:49:11</td>
+    </tr>
+    <tr>
+      <th>86</th>
+      <td>2013-08-02</td>
+      <td>PESMOS0087</td>
+      <td>20130802-J&amp;K Himachal Border</td>
+      <td>Lat: 33.50,Lon: 75.50</td>
+      <td>5.4</td>
+      <td>PIITR0127,PIITR0037,PIITR0039</td>
+      <td>2013-08-02 02:32:05</td>
+    </tr>
+    <tr>
+      <th>119</th>
+      <td>2013-08-02</td>
+      <td>PESMOS0120</td>
+      <td>20130802-J&amp;K Himachal Border1</td>
+      <td>Lat: 33.40,Lon: 75.90</td>
+      <td>5.2</td>
+      <td>PIITR0127,PIITR0037</td>
+      <td>2013-08-02 21:37:40</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>2013-08-21</td>
+      <td>PESMOS0037</td>
+      <td>20130821-Sonitpur1</td>
+      <td>Lat: 26.70,Lon: 92.40</td>
+      <td>3.9</td>
+      <td>PIITR0255,PIITR0259</td>
+      <td>2013-08-21 08:41:51</td>
+    </tr>
+    <tr>
+      <th>177</th>
+      <td>2013-08-21</td>
+      <td>PESMOS0178</td>
+      <td>20130821-Sonitpur</td>
+      <td>Lat: 26.70,Lon: 92.50</td>
+      <td>4.2</td>
+      <td>PIITR0259</td>
+      <td>2013-08-21 06:57:20</td>
+    </tr>
+    <tr>
+      <th>173</th>
+      <td>2013-08-29</td>
+      <td>PESMOS0174</td>
+      <td>20130829-Punjab-HP Border</td>
+      <td>Lat: 31.40,Lon: 76.10</td>
+      <td>4.7</td>
+      <td>PIITR0096,PIITR0087,PIITR0027,PIITR0093,PIITR0...</td>
+      <td>2013-08-29 10:13:21</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>2013-09-05</td>
+      <td>PESMOS0036</td>
+      <td>20130905-Uttarkshi</td>
+      <td>Lat: 30.90,Lon: 78.50</td>
+      <td>3.5</td>
+      <td>PIITR0013</td>
+      <td>2013-09-05 18:35:42</td>
+    </tr>
+    <tr>
+      <th>136</th>
+      <td>2013-10-07</td>
+      <td>PESMOS0137</td>
+      <td>20131007-Naogaon</td>
+      <td>Lat: 26.30,Lon: 92.50</td>
+      <td>3.7</td>
+      <td>PIITR0255,PIITR0259</td>
+      <td>2013-10-07 20:54:03</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>2013-10-20</td>
+      <td>PESMOS0090</td>
+      <td>20131020-China border</td>
+      <td>Lat: 35.80,Lon: 77.50</td>
+      <td>5.5</td>
+      <td>PDELH0004,PDELH0007,PIITR0037,PDELH0003</td>
+      <td>2013-10-20 19:45:05</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>2013-11-06</td>
+      <td>PESMOS0098</td>
+      <td>20131106-Punjab</td>
+      <td>Lat: 31.40,Lon: 76.10</td>
+      <td>4.9</td>
+      <td>PIITR0037</td>
+      <td>2013-11-06 14:53:08</td>
+    </tr>
+    <tr>
+      <th>180</th>
+      <td>2013-11-06</td>
+      <td>PESMOS0181</td>
+      <td>20131106-Assam</td>
+      <td>Lat: 26.50,Lon: 93.50</td>
+      <td>5.5</td>
+      <td>PIITR0255,PIITR0256,PIITR0239,PIITR0259</td>
+      <td>2013-11-06 04:16:16</td>
+    </tr>
+    <tr>
+      <th>106</th>
+      <td>2013-11-11</td>
+      <td>PESMOS0107</td>
+      <td>20131111-Delhi1911</td>
+      <td>Lat: 28.50,Lon: 77.20</td>
+      <td>3.1</td>
+      <td>PDELH0004,PDELH0005,PDELH0006,PDELH0007,PDELH0...</td>
+      <td>2013-11-11 19:11:18</td>
+    </tr>
+    <tr>
+      <th>183</th>
+      <td>2013-11-11</td>
+      <td>PESMOS0184</td>
+      <td>20131111-Delhi2025</td>
+      <td>Lat: 28.40,Lon: 77.20</td>
+      <td>2.5</td>
+      <td>PDELH0004,PDELH0018</td>
+      <td>2013-11-11 20:25:02</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>2013-11-11</td>
+      <td>PESMOS0066</td>
+      <td>20131111-Delhi2011</td>
+      <td>Lat: 28.40,Lon: 77.20</td>
+      <td>3.3</td>
+      <td>PDELH0013,PDELH0012,PDELH0006,PDELH0007,PDELH0...</td>
+      <td>2013-11-11 20:11:30</td>
+    </tr>
+    <tr>
+      <th>141</th>
+      <td>2013-11-11</td>
+      <td>PESMOS0142</td>
+      <td>20131111-Delhi2210</td>
+      <td>Lat: 28.40,Lon: 77.20</td>
+      <td>2.8</td>
+      <td>PDELH0004,PDELH0005,PDELH0007,PDELH0002,PDELH0...</td>
+      <td>2013-11-11 22:10:42</td>
+    </tr>
+    <tr>
+      <th>189</th>
+      <td>2013-12-25</td>
+      <td>PESMOS0190</td>
+      <td>20131225-Uttarkashi</td>
+      <td>Lat: 31.20,Lon: 78.30</td>
+      <td>4.0</td>
+      <td>PIITR0013</td>
+      <td>2013-12-25 02:56:52</td>
+    </tr>
+    <tr>
+      <th>132</th>
+      <td>2014-02-23</td>
+      <td>PESMOS0133</td>
+      <td>20140223-Kameng Arunachal</td>
+      <td>Lat: 27.20,Lon: 92.50</td>
+      <td>4.8</td>
+      <td>PIITR0255,PIITR0259</td>
+      <td>2014-02-23 17:04:50</td>
+    </tr>
+    <tr>
+      <th>156</th>
+      <td>2014-04-01</td>
+      <td>PESMOS0157</td>
+      <td>20140401-Naogaon Assam</td>
+      <td>Lat: 26.40,Lon: 92.40</td>
+      <td>4.4</td>
+      <td>PIITR0255,PIITR0259</td>
+      <td>2014-04-01 17:45:09</td>
+    </tr>
+    <tr>
+      <th>234</th>
+      <td>2014-05-30</td>
+      <td>PESMOS0235</td>
+      <td>20140530-khokhrajhar</td>
+      <td>Lat: 26.50,Lon: 90.40</td>
+      <td>4.5</td>
+      <td>PIITR0239</td>
+      <td>2014-05-30 06:37:50</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>2014-06-17</td>
+      <td>PESMOS0067</td>
+      <td>20140617-Kangra</td>
+      <td>Lat: 32.20,Lon: 76.10</td>
+      <td>4.1</td>
+      <td>PIITR0037,PIITR0038</td>
+      <td>2014-06-17 17:31:08</td>
+    </tr>
+    <tr>
+      <th>245</th>
+      <td>2014-08-21</td>
+      <td>PESMOS0246</td>
+      <td>20140821-Distt. Kangra</td>
+      <td>Lat: 32.30,Lon: 76.50</td>
+      <td>5.0</td>
+      <td>PIITR0037,PIITR0038</td>
+      <td>2014-08-21 08:11:17</td>
+    </tr>
+    <tr>
+      <th>150</th>
+      <td>2014-09-12</td>
+      <td>PESMOS0151</td>
+      <td>20140912-Goalpara</td>
+      <td>Lat: 26.10,Lon: 90.20</td>
+      <td>4.2</td>
+      <td>PIITR0239</td>
+      <td>2014-09-12 07:56:44</td>
+    </tr>
+    <tr>
+      <th>221</th>
+      <td>2015-11-29</td>
+      <td>PESMOS0222</td>
+      <td>Chamoli_29112015</td>
+      <td>Lat: 30.60,Lon: 79.60</td>
+      <td>4.0</td>
+      <td>PIITR0022,PIITR0010,PIITR0003,PIITR0019</td>
+      <td>2015-11-29 02:47:38</td>
+    </tr>
+    <tr>
+      <th>217</th>
+      <td>2016-09-25</td>
+      <td>PESMOS0218</td>
+      <td>rudp_25sept2016</td>
+      <td>Lat: 30.50,Lon: 78.90</td>
+      <td>3.7</td>
+      <td>PIITR0020,PIITR0008,PIITR0019,PIITR0013,PIITR0...</td>
+      <td>2016-09-25 21:41:36</td>
+    </tr>
+    <tr>
+      <th>176</th>
+      <td>2016-11-23</td>
+      <td>PESMOS0177</td>
+      <td>Dehradun_23112016</td>
+      <td>Lat: 30.30,Lon: 78.00</td>
+      <td>3.4</td>
+      <td>PIITR0016,PIITR0011,PIITR0062,PIITR0010,PIITR0013</td>
+      <td>2016-11-23 02:31:03</td>
+    </tr>
+    <tr>
+      <th>113</th>
+      <td>2016-12-01</td>
+      <td>PESMOS0114</td>
+      <td>Nepal_01122016</td>
+      <td>Lat: 29.80,Lon: 80.60</td>
+      <td>5.2</td>
+      <td>PIITR0022,PIITR0008,PIITR0019,PIITR0010,PIITR0...</td>
+      <td>2016-12-01 16:52:48</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2016-12-13</td>
+      <td>PESMOS0007</td>
+      <td>Uttarkashi_13122016</td>
+      <td>Lat: 30.30,Lon: 79.40</td>
+      <td>3.2</td>
+      <td>PIITR0019,PIITR0016,PIITR0014,PIITR0013,PIITR0...</td>
+      <td>2017-01-10 15:27:41</td>
+    </tr>
+    <tr>
+      <th>214</th>
+      <td>2016-12-13</td>
+      <td>PESMOS0215</td>
+      <td>Dehradun_13122016</td>
+      <td>Lat: 30.80,Lon: 78.00</td>
+      <td>3.9</td>
+      <td>PIITR0016,PIITR0014,PIITR0013,PIITR0010,PIITR0...</td>
+      <td>2016-12-13 19:14:04</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>2016-12-19</td>
+      <td>PESMOS0048</td>
+      <td>Uttarkashi_19122016</td>
+      <td>Lat: 30.90,Lon: 78.00</td>
+      <td>3.4</td>
+      <td>PIITR0014,PIITR0260,PIITR0003,PIITR0013</td>
+      <td>2016-12-19 04:31:56</td>
+    </tr>
+    <tr>
+      <th>186</th>
+      <td>2016-12-26</td>
+      <td>PESMOS0187</td>
+      <td>Dehradun_26122016</td>
+      <td>Lat: 30.80,Lon: 77.90</td>
+      <td>3.5</td>
+      <td>PIITR0014,PIITR0013</td>
+      <td>2016-12-26 08:45:48</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+# Parsing PESMOS Records
+The pesmos datas are freely available through [website](http://pesmos.in/2011/
+"PESMOS") for download. Although it is required for the users to obtain a log in
+credention for downloading data. The log in credential could be optained through
+registration. After registration web admistator will review your application and
+will send confirmation mail upon successful approval of registration. After log
+in to wesite, the users are required to go to Downloads tab for downloading
+data. The data are available in two section. First section, "View/Download
+Ground Motion Reconds" provides events from 2005 to 2014. Second section,
+"View/Download Earthquake Early Warning System Data (EEWS)" provides events from
+2015 to 2017. For each event ".zip" file is available containing station
+records. For each station three direction data, NS, EW and Z-directional are
+available. A typical format of accelaration record file is shown below
+
+    Origin Time       31/03/2006 11:25:39
+    Lat.              28.7 N
+    Long.             76.8 E
+    Depth (Km)         22.0
+    Magnitude         3.4
+     Region           JHAJJAR-HARYANA
+     Above details taken from IMD
+
+    Station Code      ROH
+    Station Lat.       28.896  N
+    Station Long.      76.593  E
+    Station Height(m)  225.0
+    Site Class        C   Vs30 between 200 m/sec to 375 m/sec *
+    Record Time       31.03.2006 11:25:26.529
+    Sampling Rate     200. Hz
+     Record Duration   29.995 Sec.
+     Direction         E-W (E positive)
+    Max. Acceleration      4.799 cm/sec**2
+
+      * For reference see Site Classification link of website
+
+     Base Line Corrected and Low Pass Filtered (Cut Off at 35 Hz) Time History
+     Acceleration data in cm/sec**2
+
+           0.228
+           0.017
+          -0.067
+          -0.050
+          -0.004
+           0.018
+           0.008
+           .
+           .
+           .
+
+These files are parsed using a python script.
+
+'''python
+'''
+Program by
+        Anis Mohammed Vengasseri
+        anis.mhd@gmail.com
+        https://github.com/anismhd
+
+        Started Date :: 20/01/2017
+
+        fname  - Should be the file name without '.ns', '.ew' or '.vt' extension
+
+        if '.' in fname:
+                print "fname  - Should be the file name without '.ns', '.ew' or
+'.vt' extension"
+                return None
+        NS = fname + ".ns"
+        EW = fname + ".ew"
+        VT = fname + ".vt"
+        f_NS = open(NS).readlines()
+        f_EW = open(EW).readlines()
+        f_VT = open(VT).readlines()
+'''
+from datetime import datetime
+import numpy as np
+import pandas as pd
+import re
+
+def geodetic_string_proccessor(lat_str, lon_str):
+        if ('N' in lat_str) or ('n' in lat_str):
+                lat = float(lat_str[:-2].strip())
+        elif ('S' in lat_str) or ('s' in lat_str):
+                lat = -1.0*float(lat_str[:-2].strip())
+        else:
+                lat = float(lat_str.strip())
+        if ('E' in lon_str) or ('e' in lon_str):
+                lon = float(lon_str[:-2].strip())
+        elif ('W' in lon_str) or ('w' in lon_str):
+                lon = -1.0*float(lon_str[:-2].strip())
+        else:
+                lon = float(lon_str.strip())
+        return lat, lon
+
+def time_stripper(time_str):
+        if int(re.split('\.|-|/|:',time_str)[0]) == 0:
+                return None
+        else:
+                if 'UTC' in time_str:
+                        date, time, utc = time_str.split()
+                else:
+                        date, time = time_str.split()
+                day, month, year = re.split('\.|-|/|:',date)
+                hour, minute, second = re.split('-|/|:',time)
+                microsecond = (float(second)-np.floor(float(second)))*10**6
+                second = int(np.floor(float(second)))
+                return datetime(int(year),int(month),int(day),int(hour),
+int(minute), int(second), int(microsecond))
+
+def pesmos_reader(fname):
+        data = open(fname).readlines()
+        event = {}
+        event['Origin Time'] = time_stripper(data[0].strip('Origin
+Time').strip())
+#       event['Latitude'] = data[1].strip('Lat.').strip()
+#       event['Longitude'] = data[2].strip('Long.').strip()
+        lat_str = data[1].strip('Lat.').strip()
+        lon_str = data[2].strip('Long.').strip()
+        event['Latitude'], event['Longitude'] =
+geodetic_string_proccessor(lat_str, lon_str)
+        event['Depth'] = data[3].strip('Depth (Km)').strip()
+        event['Magnitude'] = data[4].strip('Magnitude').strip()
+        event['Region'] = data[5].strip('Region').strip()
+        event['Source of Event Data'] = data[6].strip()
+        station = {}
+        station['Code'] = data[8].strip('Station Code').strip()
+        lat_str = data[9].strip('Station Lat.').strip()
+        lon_str = data[10].strip('Station Long.').strip()
+        station['Latitude'],station['Longitude'] =
+geodetic_string_proccessor(lat_str, lon_str)
+#       station['Height'] = float(data[11].strip('Station Height(m)').strip())
+        station['Site class'] = data[12].strip('Site Class').strip()
+        station['Record time'] = time_stripper(data[13].strip('Record
+Time').strip())
+        station['Sampling rate'] = float(data[14].strip('Sampling
+Rate').strip()[:-2])
+        station['Record_duration'] = float(data[15].strip('Record
+Duration').strip()[:-4])
+        station['Data direction'] = data[16].strip('Direction').strip()
+        station['Data PGA'] = data[17].strip('Max. Acceleration').strip()
+        station['Data filtering info'] = data[21].strip()
+        station['Data unit'] = data[22].strip('Acceleration data in').strip()
+        station['Data number'] = int(station['Sampling
+rate']*station['Record_duration'])
+        station['Data series'] = np.zeros(station['Data number'])
+        for i in range(station['Data number']):
+                station['Data series'][i] = float(data[24+i].strip())
+        return event, station
+'''
+
+
+The events recorded by PESMOS station have few issues with respect to derived
+values. Especially magnitude and location of event. In this section, magnitude
+and locations reported by PESMOS are cross verified with respect to data from
+USGS.
+
+## Methodology
+The pes
+
+The events reported in USGS for the region of India after 2000 are downloaded
+using python scripts. The data downloaded from USGS siite are parsed to obtain
+information on location, magnitude, magnitude scale, date and time of event etc.
+The parsed information are stored into a python pandas dataframe. Then,
+
+
 
 
     
