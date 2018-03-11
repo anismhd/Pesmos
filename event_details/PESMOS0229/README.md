@@ -1,0 +1,1 @@
+# 20121002-Lahul Spiti1,Tuesday 02. October 2012, 4.20 [Mag Scale Unknown]
