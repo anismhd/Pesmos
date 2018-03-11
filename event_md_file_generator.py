@@ -24,19 +24,37 @@ def event_md_file_generator(PESMOS_FILE_ID):
 		return False
 	event = pesmos_event_id_index_pd[PESMOS_FILE_ID]
 #	print pesmos_events_final[event]['Name'],pesmos_events_final[event]['Date']
-	print pesmos_events_final[event].keys()
+	print pesmos_events_final[event]['USGS Data']['MagType']
 	event_dir = main_dir+'/event_details/'+PESMOS_FILE_ID
 	f = open(event_dir+'/README.md', 'w')
 	if not os.path.exists(event_dir):
 		os.makedirs(event_dir)
-	f.write('# {0:s},{1:s}, {2:4.2f} [Mag Scale Unknown]\n'.format(pesmos_events_final[event]['Name'],pesmos_events_final[event]['Date'].strftime("%A %d. %B %Y"),4.2))
+	f.write('# {0:s},{1:s}, {2:s} [Mag Scale Unknown]\n'.format(pesmos_events_final[event]['Name'],\
+		pesmos_events_final[event]['Date'].strftime("%A %d. %B %Y"),pesmos_events_final[event]['Magnitude in File']))
 	if '-' in pesmos_events_final[event]['Name']:
-	    event_name = pesmos_events_final[event]['Name'].split('-')[0]
+	    event_name = pesmos_events_final[event]['Name'].split('-')[1]
 	elif '_' in pesmos_events_final[event]['Name']:
-	    event_name = pesmos_events_final[event]['Name'].split('_')[1]
-	f.write('\nName | {0:s}\n--- | ---\n'.format(event_name))
-	f.write('Name | {0:s}\n--- | ---\n'.format(event_name))
-	f.write('Name | {0:s}\n--- | ---\n'.format(event_name))
+	    event_name = pesmos_events_final[event]['Name'].split('_')[0]
+	f.write('\nItem | Description\n--- | ---\n')
+	f.write('Events ID | {0:s}\n'.format( pesmos_events_final[event]['Event ID'] ))
+	f.write('Filename in PESMOS database | {0:s}\n'.format(pesmos_events_final[event]['Name']))
+	f.write('Date | {0:s}\n'.format(pesmos_events_final[event]['Date'].strftime("%A %d. %B %Y")))
+	loc_str = 'Latitude:{0:7.3f}, Longitude:{1:7.3f}'.format(pesmos_events_final[event]['Location']['Latitude'],\
+		pesmos_events_final[event]['Location']['Longitude'])
+	f.write('Location | {0:s}\n'.format( loc_str ))
+	station_list = ','.join(pesmos_events_final[event]['Stations'].keys())
+	f.write('Station List | {0:s}\n'.format( station_list ))
+	f.write('Magnitude in File [No Scale]| {0:s}\n'.format( pesmos_events_final[event]['Magnitude in File']))
+	if 'USGS Data' in pesmos_events_final[event].keys():
+		f.write('USGS ID | {0:s}\n'.format( pesmos_events_final[event]['USGS Data']['EventID']))
+		mag_str = '{0:3.2f}, {1:s}\n'.format( pesmos_events_final[event]['USGS Data']['Magnitude'],\
+			pesmos_events_final[event]['USGS Data']['MagType'] )
+		f.write('USGS Magnitude | {0:s}'.format(mag_str))
+		loc_str = 'Latitude:{0:7.3f}, Longitude:{1:7.3f}'.format(pesmos_events_final[event]['USGS Data']['Latitude'],\
+			pesmos_events_final[event]['USGS Data']['Longitude'])
+		f.write('USGS Location | {0:s}\n'.format(loc_str))
+		f.write('USGS Event Time | {0:s}\n'.format(pesmos_events_final[event]['USGS Data']['Time'].strftime("%A %d. %B %Y, %H:%M:%S")))
+		f.write('USGS Depth | {0:.2f} km\n'.format(pesmos_events_final[event]['USGS Data']['Depth/km']))
 	f.close()
 	return True
 
