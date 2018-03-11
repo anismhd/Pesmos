@@ -33,10 +33,10 @@ def event_md_file_generator(PESMOS_FILE_ID):
 	if '-' in pesmos_events_final[event]['Name']:
 	    event_name = pesmos_events_final[event]['Name'].split('-')[0]
 	elif '_' in pesmos_events_final[event]['Name']:
-	    event_name = pesmos_events_final[event]['Name'].split('_')[0]
-	f.write('\nName | {0:s}\n--- | --- | ---\n'.format(event_name))
-	f.write('Name | {0:s}\n--- | --- | ---\n'.format(event_name))
-	f.write('Name | {0:s}\n--- | --- | ---\n'.format(event_name))
+	    event_name = pesmos_events_final[event]['Name'].split('_')[1]
+	f.write('\nName | {0:s}\n--- | ---\n'.format(event_name))
+	f.write('Name | {0:s}\n--- | ---\n'.format(event_name))
+	f.write('Name | {0:s}\n--- | ---\n'.format(event_name))
 	f.close()
 	return True
 
