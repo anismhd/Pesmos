@@ -2,12 +2,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pickle
 import os
+from mpl_toolkits.basemap import Basemap
 
 pesmos_db_loc = "/home/anis/Desktop/GitHub/Pesmos_Original/DataProcessing/"
 pesmos_events_final = pickle.load( open(pesmos_db_loc+'pesmos_events_final.pickle','rb') )
 pesmos_event_id_index_pd = pickle.load( open(pesmos_db_loc+'pesmos_event_id_index_pd.pickle','rb') )
+station_data_from_file = pickle.load( open(pesmos_db_loc+'station_data_from_file.pickle','rb') )
 
 main_dir = './'
+
+def md_figure_gen(location, description):
+	return '![{0:s}]({1:s})\n'.format(description,location)
 
 def india_basemap(main_dir):
     m = Basemap(width=800000000,height=700000000,
@@ -24,8 +29,8 @@ def event_md_file_generator(PESMOS_FILE_ID):
 		return False
 	event = pesmos_event_id_index_pd[PESMOS_FILE_ID]
 #	print pesmos_events_final[event]['Name'],pesmos_events_final[event]['Date']
-	print pesmos_events_final[event]['USGS Data']['MagType']
 	event_dir = main_dir+'/event_details/'+PESMOS_FILE_ID
+	# Generating initial table about event
 	f = open(event_dir+'/README.md', 'w')
 	if not os.path.exists(event_dir):
 		os.makedirs(event_dir)
@@ -55,6 +60,26 @@ def event_md_file_generator(PESMOS_FILE_ID):
 		f.write('USGS Location | {0:s}\n'.format(loc_str))
 		f.write('USGS Event Time | {0:s}\n'.format(pesmos_events_final[event]['USGS Data']['Time'].strftime("%A %d. %B %Y, %H:%M:%S")))
 		f.write('USGS Depth | {0:.2f} km\n'.format(pesmos_events_final[event]['USGS Data']['Depth/km']))
+	# Generating Event Location Figure
+	plt.figure(figsize=(30,17))
+	m = india_basemap(main_dir)
+	file_loc_str = 'Location Reported in PESMOS File, Latitude:{0:7.3f}, Longitude:{1:7.3f}'.format(pesmos_events_final[event]['Location']['Latitude'],\
+		pesmos_events_final[event]['Location']['Longitude'])
+	m.scatter([ pesmos_events_final[event]['Location']['Longitude'] ],\
+		[ pesmos_events_final[event]['Location']['Latitude'] ],s=90,latlon=True,marker='D',color='g', label=file_loc_str)
+	if 'USGS Data' in pesmos_events_final[event].keys():
+		usgs_loc_str = 'Location Reported in USGS Database, Latitude:{0:7.3f}, Longitude:{1:7.3f}'.format(pesmos_events_final[event]['USGS Data']['Latitude'],\
+		pesmos_events_final[event]['USGS Data']['Longitude'])
+		m.scatter([ pesmos_events_final[event]['USGS Data']['Longitude'] ],\
+			[ pesmos_events_final[event]['USGS Data']['Latitude'] ],s=90,latlon=True,marker='D',color='r', label=usgs_loc_str)
+	# Plot recorded station location
+	for station in pesmos_events_final[event]['Stations']:
+		m.scatter([ station_data_from_file[station]['Longitude'] ],\
+		[ station_data_from_file[station]['Latitude'] ],s=90,latlon=True,marker='*', label=station)
+	plt.legend(scatterpoints=1)
+	plt.savefig(event_dir+'/event_loc.png')
+	plt.close('all')
+	f.write(md_figure_gen('event_loc.png', 'Location of Event and Stations Records'))
 	f.close()
 	return True
 

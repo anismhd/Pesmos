@@ -13,3 +13,5 @@ USGS Magnitude | 4.80, mb
 USGS Location | Latitude: 32.471, Longitude: 76.632
 USGS Event Time | Tuesday 02. October 2012, 08:34:54
 USGS Depth | 10.00 km
+
+![Location of Event and Stations Records](event_loc.png)
